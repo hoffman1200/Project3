@@ -1,7 +1,7 @@
 import React from "react";
-import "../Styles/Home.css";
+import "../../Styles/Pages/Join.css";
 
-function Home() {
+function Join() {
   return (
     <>
       <div className="container homeContainer">
@@ -15,13 +15,10 @@ function Home() {
           <button type="button" className="btn btn-primary btn-lg">
             Sign Up
           </button>
-          <button type="button" className="btn btn-primary btn-lg">
-            Sign in as Guest
-          </button>
         </div>
       </div>
     </>
   );
 }
 
-export default Home;
+export default Join;
