@@ -9,6 +9,7 @@ import Footer from "./Components/Elements/Footer";
 import Join from "./Components/Pages/Join";
 import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
+// import Error404 from "./Components/Pages/Error404";
 import "../src/card.json";
 
 function App() {
@@ -16,9 +17,9 @@ function App() {
 
   const [userName, setUserName] = useState("");
 
-  const [games, setGames] = useState([]);
+  // const [games, setGames] = useState([]);
 
-  const [savedGames, setSavedGames] = useState([]);
+  // const [savedGames, setSavedGames] = useState([]);
 
   return (
     <>
@@ -29,8 +30,8 @@ function App() {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/saved" component={Saved} />
         <Route exact path="/join" component={Join} />
-        <Route path="/game" component={Game} />
-        {/* <Route path="/" component={Error404} /> */}
+        <Route path="/game/:id" component={Game} />
+        {/* <Route component={Error404} /> */}
       </Router>
       <Footer />
     </>
