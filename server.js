@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3003;
 
 // Define middleware here
 app.use(logger("dev"));
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
