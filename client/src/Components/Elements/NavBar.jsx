@@ -2,20 +2,28 @@ import React from "react";
 import "../../Styles/Elements/NavBar.css";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import Logo from "../../assets/logo.png"
+import "../../assets/fonts/Minecraft.ttf"
 
 function NavBar({ isLogged, userName }) {
   return (
     <>
       <nav className="navigationBar">
+
         <div className="nav-left">
           <Link to="/">
             <img
-              src="https://vignette.wikia.nocookie.net/rickandmorty/images/4/41/Pickle_rick_transparent_edgetrimmed.png/revision/latest?cb=20200324115455"
+              src={Logo}
               className="nav-logo"
               alt="..."
             />
           </Link>
         </div>
+
+        <div className="nav-center">
+          <p>Gamer Dash</p>
+        </div>
+
         <div className="nav-right">
           {isLogged ? (
             <>
