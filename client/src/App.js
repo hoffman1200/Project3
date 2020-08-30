@@ -21,6 +21,8 @@ function App() {
 
   // const [savedGames, setSavedGames] = useState([]);
 
+  // add ternary function to create two states: logged in and not logged in. This would create two different classNames for more dynamic styling
+
   return (
     <>
       <Router>
