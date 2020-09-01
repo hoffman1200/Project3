@@ -2,26 +2,26 @@ import React from "react";
 import "../../Styles/Elements/NavBar.css";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import Logo from "../../assets/logo.png"
-import "../../assets/fonts/Minecraft.ttf"
+import Logo from "../../assets/logo.png";
+import "../../assets/fonts/Minecraft.ttf";
 
-function NavBar({ isLogged, userName }) {
+function NavBar({ isLogged, userName, savedGames }) {
   return (
     <>
       <nav className="navigationBar">
-
         <div className="nav-left">
           <Link to="/">
-            <img
-              src={Logo}
-              className="nav-logo"
-              alt="..."
-            />
+            <img src={Logo} className="nav-logo" alt="..." />
           </Link>
         </div>
 
         <div className="nav-center">
-          <p>Gamer Dash</p>
+          <p>
+            Gamer Dash{" "}
+            {savedGames.map((sg) => {
+              return <>{sg.id}</>;
+            })}
+          </p>
         </div>
 
         <div className="nav-right">
