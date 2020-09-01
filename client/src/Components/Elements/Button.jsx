@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Styles/Elements/Button.css";
 
-function Button({ children }) {
+function Button(props) {
   return (
     <>
-      <button className="button"> {children} </button>
+      <button className="button" onClick={props.onClick}> {props.children} </button>
     </>
   );
 }
