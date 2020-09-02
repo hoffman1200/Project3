@@ -2,6 +2,7 @@ import React from "react";
 import "../../Styles/Pages/Saved.css";
 import { useState } from "react";
 import axios from "axios";
+import Button from "../Elements/Button"
 
 function Saved() {
   const [data, setData] = useState(null);
@@ -20,7 +21,8 @@ function Saved() {
 
   return(
    <>
-   
+             <Button onClick={getUser}>Get User</Button>
+
    
    Saved Games Here!!
    {data ? <h1>Hello {data.username}</h1> : null}
