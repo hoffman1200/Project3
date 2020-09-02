@@ -1,38 +1,38 @@
-import React from "react";
-import "../Styles/Card.css";
+import React, { useState } from "react";
+import "../../Styles/Elements/Card.css";
+import { Link } from "react-router-dom";
 
-function Card(props) {
+function Card({ game, isSaved, toggleSaved, isLogged }) {
+  const [isSavedSelf, setIsSavedSelf] = useState(isSaved);
+
+  let toggleSavedSelf = () => {
+    toggleSaved(game.id, isSavedSelf);
+    setIsSavedSelf(!isSavedSelf);
+  };
+
   return (
     <>
-      <div className="card">
+      <div className="card" key={game.id} id={"card" + game.id}>
         <div className="imageContainer">
-          <link>
-            <img alt={props.title} src={props.image} />
-          </link>
+          <Link to={"/game/" + game.id}>
+            <img alt={game.title} src={game.image} />
+          </Link>
         </div>
         <div className="description">
-          <ul>
-            <li>
-              <h3>{props.title}</h3>
-            </li>
-            <li>
-              <strong>Description:</strong> {props.description}
-            </li>
-            <li>
-              <strong>How to play: </strong> {props.instructions}
-            </li>
-          </ul>
+          <h3>{game.title}</h3>
+          <p>
+            <strong>Description:</strong> {game.description}
+          </p>
+          {isLogged ? (
+            <>
+              <button onClick={toggleSavedSelf}>
+                {isSavedSelf ? "💚" : "🤍"}
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
-        <span
-          onClick={() => props.addToFavorites(props.id)}
-          className="favorite"
-        >
-          {" "}
-          ✔️{" "}
-        </span>
-        <span onClick={() => props.removeFavorite(props.id)} className="remove">
-          X
-        </span>
       </div>
     </>
   );

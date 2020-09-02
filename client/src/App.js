@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Components/Pages/Home";
@@ -10,33 +10,55 @@ import Join from "./Components/Pages/Join";
 import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
-import "../src/card.json";
+import gameSeed from "../src/card.json";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
 
   const [userName, setUserName] = useState("");
 
-  // const [games, setGames] = useState([]);
+  const [games, setGames] = useState([...gameSeed]);
 
-  // const [savedGames, setSavedGames] = useState([]);
+  const [savedGames, setSavedGames] = useState([games[0], games[2]]);
 
   return (
-    <>
+    <div className={isLogged ? "main logged" : "main"}>
       <Router>
-        <NavBar isLogged={isLogged} userName={userName} />
+        <NavBar
+          isLogged={isLogged}
+          userName={userName}
+          savedGames={savedGames}
+        />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home
+                isLogged={isLogged}
+                games={games}
+                savedGames={savedGames}
+                setSavedGames={setSavedGames}
+              />
+            )}
+          />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/saved" component={Saved} />
+          <Route
+            exact
+            path="/saved"
+            render={() => <Saved savedGames={savedGames} />}
+          />
           <Route exact path="/join" component={Join} />
-          <Route path="/game/:id" component={Game} />
+          <Route
+            path="/game/:id"
+            render={(props) => <Game {...props} games={games} />}
+          />
           <Route component={Error404} />
         </Switch>
         <Footer />
       </Router>
-    </>
+    </div>
   );
 }
 export default App;

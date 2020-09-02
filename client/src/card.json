@@ -1,42 +1,42 @@
 [
-    {
-        "id": 1,
-        "URL": "/boxShooter",
-        "image": "#",
-        "title": "Box Shooter",
-        "description": "This exciting game puts you in the Tron dimension where you can shoot boxes and balls, but watch out! Some targets will make you lose points. You are on a timer!",
-        "instructions": "Using your mouse, left click to shoot at the targets within the given time frame. Good luck!"
-    },
-    {
-        "id": 2,
-        "URL": "/rollerMadness",
-        "image": "#",
-        "title": "Roller Madness",
-        "description": "Here, you play Rolly-Ball, a cute metallic green ball ready to make some coin. Watch out, there are some enemies on your tail. Don't fall off the platform!",
-        "instructions": "Using the WASD keys, move around the platform using the environment to catch as many coins as you can."
-    },
-    {
-        "id": 3,
-        "URL": "/rollerMadnessOrigins",
-        "image": "#",
-        "title": "Roller Madness Origins",
-        "description": "The place where Rolly-Ball first took on the stage! Be prepared for the original Rolly-Ball experience!",
-        "instructions": "Using the WASD keys, move around the platform using the environment to catch as many coins as you can."
-    },
-    {
-        "id": 4,
-        "URL": "/spartyBros",
-        "image": "#",
-        "title": "Sparty Bros",
-        "description": "This traditional, but ever so epic side scroller will have you winning the rose!",
-        "instructions": "Using your arrow keys to walk and the shift key to jump, avoid enemies, and find the coins. To finish the level, you must find the rose."
-    },
-    {
-        "id": 5,
-        "URL": "/solarSystemSim",
-        "image":"#",
-        "title": "Solar System Simulator",
-        "description": "This is a calming experience where you can watch our lovely solar system in continuous revolutions.",
-        "instructions": "Relax. Watch the show."
-    }
+  {
+    "id": 1,
+    "URL": "https://bbblue-games-server.herokuapp.com/boxShooter",
+    "image": "/game_images/boxShooter.jpg",
+    "title": "Box Shooter",
+    "description": "This exciting game puts you in the Tron dimension where you can shoot boxes and balls, but watch out! Some targets will make you lose points. You are on a timer!",
+    "instructions": "Using your mouse, left click to shoot at the targets within the given time frame. Good luck!"
+  },
+  {
+    "id": 2,
+    "URL": "https://bbblue-games-server.herokuapp.com/rollerMadness",
+    "image": "/game_images/rollerMadness.jpg",
+    "title": "Roller Madness",
+    "description": "Here, you play Rolly-Ball, a cute metallic green ball ready to make some coin. Watch out, there are some enemies on your tail. Don't fall off the platform!",
+    "instructions": "Using the WASD keys, move around the platform using the environment to catch as many coins as you can."
+  },
+  {
+    "id": 3,
+    "URL": "https://bbblue-games-server.herokuapp.com/rollerMadnessOrigins",
+    "image": "/game_images/rollerMadnessOrigins.jpg",
+    "title": "Roller Madness Origins",
+    "description": "The place where Rolly-Ball first took on the stage! Be prepared for the original Rolly-Ball experience!",
+    "instructions": "Using the WASD keys, move around the platform using the environment to catch as many coins as you can."
+  },
+  {
+    "id": 4,
+    "URL": "https://bbblue-games-server.herokuapp.com/spartyBros",
+    "image": "/game_images/spartyBros.jpg",
+    "title": "Sparty Bros",
+    "description": "This traditional, but ever so epic side scroller will have you winning the rose!",
+    "instructions": "Using your arrow keys to walk and the shift key to jump, avoid enemies, and find the coins. To finish the level, you must find the rose."
+  },
+  {
+    "id": 5,
+    "URL": "https://bbblue-games-server.herokuapp.com/solarSystemSim",
+    "image": "/game_images/solarSystemSim.jpg",
+    "title": "Solar System Simulator",
+    "description": "This is a calming experience where you can watch our lovely solar system in continuous revolutions.",
+    "instructions": "Relax. User your left mouse button to click on planets, moons, and the sun. Watch the show."
+  }
 ]

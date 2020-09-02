@@ -5,8 +5,14 @@ function Game(props) {
   const { id } = props.match.params;
   return (
     <>
-      <h1>Game!!!</h1>
-      <h4>This is game {id}</h4>
+      {/* Replace this with server call by Id */}
+      <h2>{props.games[id - 1].title}</h2>
+      <iframe
+        src={props.games[id - 1].URL}
+        frameborder="0"
+        width="1000px"
+        height="700px"
+      ></iframe>
     </>
   );
 }
