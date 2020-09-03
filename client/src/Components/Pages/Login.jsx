@@ -2,14 +2,16 @@ import React from "react";
 import "../../Styles/Pages/Login.css";
 import Button from "../Elements/Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { Context } from "../../App";
 
 
 function Login() {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState(null);
+  const user = useContext(Context)
+  console.log(user)
   // const click = (e) => {
   //   e.preventDefault();
   //   console.log("click");
@@ -34,7 +36,7 @@ function Login() {
       withCredentials: true,
       url: "http://localhost:3003/api/user"
     }).then((res) => {
-      setData(res.data)
+      user.setUser(res.data)
       console.log(res.data)
     });
     
@@ -49,7 +51,7 @@ function Login() {
           <Button onClick={login}>Submit</Button>
           <Button onClick={getUser}>Get User</Button>
       </form>
-        {data ? <h1>Hello {data.username}</h1> : null}
+        {user.user ? <h1>Hello {user.user.username}</h1> : null}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Components/Pages/Home";
@@ -11,6 +11,7 @@ import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import gameSeed from "../src/card.json";
+export const Context = React.createContext({user: "", setUser: () => {}});
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -20,9 +21,18 @@ function App() {
   const [games, setGames] = useState([...gameSeed]);
 
   const [savedGames, setSavedGames] = useState([games[0], games[2]]);
+  
+  const [data, setData] = useState({
+    user: "",
+    setUser: (userName) => {
+      setData({...data, user: userName})
+    }
+  });
+
 
   return (
     <div className={isLogged ? "main logged" : "main"}>
+      <Context.Provider value={data}>
       <Router>
         <NavBar
           isLogged={isLogged}
@@ -58,6 +68,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
+      </Context.Provider>
     </div>
   );
 }
