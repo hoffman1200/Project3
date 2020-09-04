@@ -1,10 +1,13 @@
 import React from "react";
 import "../../Styles/Elements/Button.css";
+import { Button as AntButton} from 'antd';
 
 function Button({ children }) {
   return (
     <>
-      <button className="button"> {children} </button>
+    <AntButton type="primary">
+      <p> {children} </p>
+    </AntButton>
     </>
   );
 }

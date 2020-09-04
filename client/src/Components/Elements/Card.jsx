@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../Styles/Elements/Card.css";
 import { Link } from "react-router-dom";
+import { Card as AntCard } from 'antd';
 
 function Card({ game, isSaved, toggleSaved, isLogged }) {
   const [isSavedSelf, setIsSavedSelf] = useState(isSaved);
@@ -12,6 +13,7 @@ function Card({ game, isSaved, toggleSaved, isLogged }) {
 
   return (
     <>
+    <AntCard className="CartContainer" hooverable>
       <div className="card" key={game.id} id={"card" + game.id}>
         <div className="imageContainer">
           <Link to={"/game/" + game.id}>
@@ -34,7 +36,9 @@ function Card({ game, isSaved, toggleSaved, isLogged }) {
           )}
         </div>
       </div>
+      </AntCard>
     </>
+
   );
 }
 

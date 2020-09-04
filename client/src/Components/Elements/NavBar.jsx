@@ -5,7 +5,8 @@ import Button from "./Button";
 import Logo from "../../assets/logo.png";
 import "../../assets/fonts/Minecraft.ttf";
 
-function NavBar({ isLogged, userName, savedGames }) {
+function NavBar({ isLogged, userName, savedGames, location }) {
+  console.log(location)
   return (
     <>
       <nav className="navigationBar">
@@ -40,6 +41,7 @@ function NavBar({ isLogged, userName, savedGames }) {
               <Link to="/login">
                 <Button>Login</Button>
               </Link>
+              &nbsp;&nbsp;&nbsp; 
               <Link to="/signup">
                 <Button>Sign Up</Button>
               </Link>
