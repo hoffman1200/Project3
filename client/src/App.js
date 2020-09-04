@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
 import SignUp from "./Components/Pages/SignUp";
@@ -26,8 +26,32 @@ function App() {
     user: "",
     setUser: (userName) => {
       setData({...data, user: userName})
+      setUserName(userName)
     }
   });
+
+  function loggedUser () {
+    setIsLogged(true);
+  }
+
+  function PrivateRoute({ children, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={() =>
+          isLogged ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login"
+              }}
+            />
+          )
+        }
+      />
+    );
+  }
 
 
   return (
@@ -52,13 +76,23 @@ function App() {
               />
             )}
           />
-          <Route exact path="/login" component={Login} />
+          <Route 
+          exact path="/login" 
+          render={() => (
+            <Login
+            isLogged={isLogged}
+            loggedUser={loggedUser} 
+              />
+            )}  
+          />
           <Route exact path="/signup" component={SignUp} />
+          <PrivateRoute>
           <Route
             exact
             path="/saved"
             render={() => <Saved savedGames={savedGames} />}
           />
+          </PrivateRoute>
           <Route exact path="/join" component={Join} />
           <Route
             path="/game/:id"
