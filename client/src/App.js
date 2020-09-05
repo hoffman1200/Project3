@@ -11,9 +11,8 @@ import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import gameSeed from "../src/card.json";
-export const Context = React.createContext({user: "", setUser: () => {}});
 import 'antd/dist/antd.css';
-
+export const Context = React.createContext({user: "", setUser: () => {}});
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -29,7 +28,7 @@ function App() {
     setUser: (userName) => {
       setData({...data, user: userName})
       setUserName(userName)
-      setIsLogged(true);
+      !userName ? setIsLogged(false) : setIsLogged(true) 
     }
   });
 
