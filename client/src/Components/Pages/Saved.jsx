@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import { Context } from "../../App";
 
 
+
 function Saved({ savedGames }) {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -14,7 +15,16 @@ function Saved({ savedGames }) {
   console.log(user)
 
   let removeSaved = () => {
+
+function Saved({ savedGames, setSavedGames }) {
+  let removeSaved = (gameid, isSavedSelf) => {
+
     console.log("I don-t want to go Mr Stark");
+    console.log(gameid, isSavedSelf);
+    let remainingGames = savedGames.filter((sgame) => {
+      return sgame.id !== parseInt(gameid);
+    });
+    setSavedGames(remainingGames);
   };
   return (
     <div id="saved">

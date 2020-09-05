@@ -12,6 +12,8 @@ import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import gameSeed from "../src/card.json";
 export const Context = React.createContext({user: "", setUser: () => {}});
+import 'antd/dist/antd.css';
+
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -92,7 +94,9 @@ function App() {
           <Route
             exact
             path="/saved"
-            render={() => <Saved savedGames={savedGames} />}
+            render={() => (
+              <Saved savedGames={savedGames} setSavedGames={setSavedGames} />
+            )}
           />
           </PrivateRoute>
           <Route exact path="/join" component={Join} />

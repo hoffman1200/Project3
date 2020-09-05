@@ -1,6 +1,9 @@
 import React from "react";
 import "../../Styles/Pages/Login.css";
 import Button from "../Elements/Button";
+import greenBackground from "../../assets/greenWalk.mp4";
+import { Input } from 'antd';
+import { UserOutlined, LockOutlined} from "@ant-design/icons"
 import { Link, Redirect } from "react-router-dom";
 import { useState, useContext } from "react";
 import axios from "axios";
@@ -45,13 +48,27 @@ function Login({loggedUser}) {
     loggedUser();
   }
 
-
   return (
     
     <>
+
       <form onSubmit={login}>
         <input placeholder="username" onChange={event => setLoginUsername(event.target.value)}/>
         <input placeholder="password" type="password" onChange={event => setLoginPassword(event.target.value)}/>
+
+    <video className="greenVideo" autoPlay loop muted source src={greenBackground} type="video/mp4"/>
+      <form>
+          <Input onChange
+              prefix={<UserOutlined/>}
+              placeholder="Username"
+            />
+            <Input
+              prefix={<LockOutlined/>}
+              type="password"
+              placeholder="Password"
+            />
+        <Link to="/">
+
           <Button>Submit</Button>
           {/* <Button onClick={getUser}>Get User</Button> */}
       </form>
@@ -59,5 +76,4 @@ function Login({loggedUser}) {
     </>
   );
 }
-
 export default Login;
