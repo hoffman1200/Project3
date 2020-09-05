@@ -71,7 +71,7 @@ function Login({loggedUser}) {
               type="password"
               placeholder="Password"
             />
-          <Button onClick={getUser}>Submit</Button>
+          <Button htmlType="submit">Submit</Button>
           {/* <Button onClick={getUser}>Get User</Button> */}
       </form>
         {user.user ? <h1>Hello {user.user.username}</h1> : null}
