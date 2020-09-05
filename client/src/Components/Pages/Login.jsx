@@ -11,8 +11,7 @@ function Login() {
     <>
     <video className="greenVideo" autoPlay loop muted source src={greenBackground} type="video/mp4"/>
       <form>
-          <Input
-              onChange
+          <Input onChange
               prefix={<UserOutlined/>}
               placeholder="Username"
             />
