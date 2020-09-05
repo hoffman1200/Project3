@@ -11,6 +11,7 @@ import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import gameSeed from "../src/card.json";
+import 'antd/dist/antd.css';
 export const Context = React.createContext({user: "", setUser: () => {}});
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
     setUser: (userName) => {
       setData({...data, user: userName})
       setUserName(userName)
-      setIsLogged(true);
+      !userName ? setIsLogged(false) : setIsLogged(true) 
     }
   });
 
@@ -92,7 +93,9 @@ function App() {
           <Route
             exact
             path="/saved"
-            render={() => <Saved savedGames={savedGames} />}
+            render={() => (
+              <Saved savedGames={savedGames} setSavedGames={setSavedGames} />
+            )}
           />
           </PrivateRoute>
           <Route exact path="/join" component={Join} />
