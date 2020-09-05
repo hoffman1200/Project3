@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
 import SignUp from "./Components/Pages/SignUp";
@@ -11,7 +11,9 @@ import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import gameSeed from "../src/card.json";
+export const Context = React.createContext({user: "", setUser: () => {}});
 import 'antd/dist/antd.css';
+
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -21,9 +23,44 @@ function App() {
   const [games, setGames] = useState([...gameSeed]);
 
   const [savedGames, setSavedGames] = useState([games[0], games[2]]);
+  
+  const [data, setData] = useState({
+    user: "",
+    setUser: (userName) => {
+      setData({...data, user: userName})
+      setUserName(userName)
+      setIsLogged(true);
+    }
+  });
+
+  function loggedUser () {
+    console.log("loggedUser")
+    // userName && 
+  }
+
+  function PrivateRoute({ children, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={() =>
+          isLogged ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login"
+              }}
+            />
+          )
+        }
+      />
+    );
+  }
+
 
   return (
     <div className={isLogged ? "main logged" : "main"}>
+      <Context.Provider value={data}>
       <Router>
         <NavBar
           isLogged={isLogged}
@@ -43,8 +80,17 @@ function App() {
               />
             )}
           />
-          <Route exact path="/login" component={Login} />
+          <Route 
+          exact path="/login" 
+          render={() => (
+            <Login
+            isLogged={isLogged}
+            loggedUser={loggedUser} 
+              />
+            )}  
+          />
           <Route exact path="/signup" component={SignUp} />
+          <PrivateRoute>
           <Route
             exact
             path="/saved"
@@ -52,6 +98,7 @@ function App() {
               <Saved savedGames={savedGames} setSavedGames={setSavedGames} />
             )}
           />
+          </PrivateRoute>
           <Route exact path="/join" component={Join} />
           <Route
             path="/game/:id"
@@ -61,6 +108,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
+      </Context.Provider>
     </div>
   );
 }
