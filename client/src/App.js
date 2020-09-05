@@ -11,6 +11,7 @@ import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import gameSeed from "../src/card.json";
+import 'antd/dist/antd.css';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
