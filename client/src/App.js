@@ -47,7 +47,9 @@ function App() {
           <Route
             exact
             path="/saved"
-            render={() => <Saved savedGames={savedGames} />}
+            render={() => (
+              <Saved savedGames={savedGames} setSavedGames={setSavedGames} />
+            )}
           />
           <Route exact path="/join" component={Join} />
           <Route

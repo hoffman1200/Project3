@@ -16,12 +16,7 @@ function NavBar({ isLogged, userName, savedGames }) {
         </div>
 
         <div className="nav-center">
-          <p>
-            Gamer Dash{" "}
-            {savedGames.map((sg) => {
-              return <>{sg.id}</>;
-            })}
-          </p>
+          <p>Gamer Dash</p>
         </div>
 
         <div className="nav-right">

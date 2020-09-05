@@ -2,9 +2,14 @@ import React from "react";
 import "../../Styles/Pages/Saved.css";
 import Card from "../Elements/Card";
 
-function Saved({ savedGames }) {
-  let removeSaved = () => {
+function Saved({ savedGames, setSavedGames }) {
+  let removeSaved = (gameid, isSavedSelf) => {
     console.log("I don-t want to go Mr Stark");
+    console.log(gameid, isSavedSelf);
+    let remainingGames = savedGames.filter((sgame) => {
+      return sgame.id !== parseInt(gameid);
+    });
+    setSavedGames(remainingGames);
   };
   return (
     <div id="saved">
