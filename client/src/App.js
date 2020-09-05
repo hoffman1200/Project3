@@ -27,11 +27,13 @@ function App() {
     setUser: (userName) => {
       setData({...data, user: userName})
       setUserName(userName)
+      setIsLogged(true);
     }
   });
 
   function loggedUser () {
-    setIsLogged(true);
+    console.log("loggedUser")
+    // userName && 
   }
 
   function PrivateRoute({ children, ...rest }) {

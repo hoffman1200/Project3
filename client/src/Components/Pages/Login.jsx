@@ -24,19 +24,21 @@ function Login({loggedUser}) {
       },
       withCredentials: true,
       url: "http://localhost:3003/api/login"
-    }).then((res) => console.log(res.data));
+    }).then((res) => {
+      getUser();
+      console.log(res.data)});
     // logRedirect();
   };
 
 
   const getUser = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     axios({
       method: "GET",
       withCredentials: true,
       url: "http://localhost:3003/api/user"
     }).then((res) => {
-      user.setUser(res.data)
+      user && user.setUser(res.data)
       console.log(res.data)
       
     });
@@ -50,7 +52,7 @@ function Login({loggedUser}) {
       <form onSubmit={login}>
         <input placeholder="username" onChange={event => setLoginUsername(event.target.value)}/>
         <input placeholder="password" type="password" onChange={event => setLoginPassword(event.target.value)}/>
-          <Button onClick={getUser}>Submit</Button>
+          <Button>Submit</Button>
           {/* <Button onClick={getUser}>Get User</Button> */}
       </form>
         {user.user ? <h1>Hello {user.user.username}</h1> : null}
