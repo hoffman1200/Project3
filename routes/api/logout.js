@@ -5,7 +5,8 @@ router
   .route("/")
   .get((req, res) => {
       req.logOut();
-      res.redirect("/api/login")
+      res.send("Logged Out")
+      console.log("Logged Out")
   });
 
   module.exports = router;

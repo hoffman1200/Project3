@@ -30,7 +30,6 @@ function Login({loggedUser}) {
     }).then((res) => {
       getUser();
       console.log(res.data)});
-    // logRedirect();
   };
 
 
@@ -45,7 +44,6 @@ function Login({loggedUser}) {
       console.log(res.data)
 
     });
-    loggedUser();
   }
 
   return (
@@ -62,11 +60,13 @@ function Login({loggedUser}) {
 
 
       <form onSubmit={login}>
-          <Input onChange={event => setLoginUsername(event.target.value)}
+          <Input 
+              onChange={event => setLoginUsername(event.target.value)}
               prefix={<UserOutlined/>}
               placeholder="Username"
             />
-            <Input onChange={event => setLoginPassword(event.target.value)}
+            <Input 
+              onChange={event => setLoginPassword(event.target.value)}
               prefix={<LockOutlined/>}
               type="password"
               placeholder="Password"

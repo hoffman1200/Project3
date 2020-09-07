@@ -7,7 +7,9 @@ const gameSchema = new Schema({
   title: { type: String, required: true},
   description: { type: String, required: true},
   instructions: { type: String, required: true},
-  category: {type: String, required: true}
+  category: {type: String, required: true},
+  username: {type: String, required: true}
+
 });
 
 const Game = mongoose.model("Game", gameSchema);
