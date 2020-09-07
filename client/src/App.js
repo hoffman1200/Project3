@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
 import SignUp from "./Components/Pages/SignUp";
@@ -10,6 +10,7 @@ import Join from "./Components/Pages/Join";
 import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
+import AddGame from "./Components/Pages/AddGame";
 import gameSeed from "../src/card.json";
 import 'antd/dist/antd.css';
 export const Context = React.createContext({user: "", setUser: () => {}});
@@ -34,7 +35,7 @@ function App() {
 
   function loggedUser () {
     console.log("loggedUser")
-    // userName && 
+
   }
 
   function PrivateRoute({ children, ...rest }) {
@@ -96,6 +97,11 @@ function App() {
             render={() => (
               <Saved savedGames={savedGames} setSavedGames={setSavedGames} />
             )}
+          />
+          <Route
+            exact
+            path="/addgame"
+            component={AddGame}
           />
           </PrivateRoute>
           <Route exact path="/join" component={Join} />
