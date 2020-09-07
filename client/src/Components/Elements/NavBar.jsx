@@ -8,24 +8,22 @@ import { useState, useContext } from "react";
 import { Context } from "../../App";
 import "../../assets/fonts/Minecraft.ttf";
 
-
 function NavBar({ isLogged, userName, savedGames }) {
-  const user = useContext(Context)
-  console.log(isLogged)
-  console.log(userName)
-  
+  const user = useContext(Context);
+  console.log(isLogged);
+  console.log(userName);
+
   const logOut = (e) => {
     e.preventDefault();
     axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:3003/api/logout"
+      url: "http://localhost:3003/api/logout",
     }).then((res) => {
-      user && user.setUser("")
-      console.log(res.data)
-
+      user && user.setUser("");
+      console.log(res.data);
     });
-  }
+  };
 
   return (
     <>
@@ -39,9 +37,9 @@ function NavBar({ isLogged, userName, savedGames }) {
         <div className="nav-center">
           <p>
             Gamer Dash{" "}
-            {savedGames.map((sg) => {
+            {/* {savedGames.map((sg) => {
               return <>{sg.id}</>;
-            })}
+            })} */}
           </p>
         </div>
 
@@ -55,8 +53,11 @@ function NavBar({ isLogged, userName, savedGames }) {
               <Link to="/addgame">
                 <Button>Add a Game</Button>
               </Link>
+              <Link to="/profile">
+                <Button>Your Profile</Button>
+              </Link>
               {/* <Link to="/logout"> */}
-                <Button onClick={logOut}>Log Out</Button>
+              <Button onClick={logOut}>Log Out</Button>
               {/* </Link> */}
             </>
           ) : (
