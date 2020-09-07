@@ -6,6 +6,8 @@ import Logo from "../../assets/logo.png";
 import "../../assets/fonts/Minecraft.ttf";
 
 function NavBar({ isLogged, userName, savedGames }) {
+  console.log(isLogged)
+  console.log(userName)
   return (
     <>
       <nav className="navigationBar">
@@ -16,13 +18,18 @@ function NavBar({ isLogged, userName, savedGames }) {
         </div>
 
         <div className="nav-center">
-          <p>Gamer Dash</p>
+          <p>
+            Gamer Dash{" "}
+            {savedGames.map((sg) => {
+              return <>{sg.id}</>;
+            })}
+          </p>
         </div>
 
         <div className="nav-right">
           {isLogged ? (
             <>
-              <p className="username">{userName}</p>
+              <p className="username">{userName.username}</p>
               <Link to="/saved">
                 <Button>My Saved Games</Button>
               </Link>

@@ -2,7 +2,8 @@ const router = require("express").Router();
 const gamesController = require("../../controllers/gamesControllers");
 
 // Matches with "/api/games"
-router.route("/")
+router
+  .route("/")
   .get(gamesController.findAll)
   .post(gamesController.create);
 
@@ -12,5 +13,5 @@ router
   .get(gamesController.findById)
   .put(gamesController.update)
   .delete(gamesController.remove);
-
+  
 module.exports = router;

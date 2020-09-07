@@ -1,8 +1,20 @@
 import React from "react";
 import "../../Styles/Pages/Saved.css";
 import Card from "../Elements/Card";
+import { useState, useContext } from "react";
 
-function Saved({ savedGames, setSavedGames }) {
+import { Context } from "../../App";
+
+
+// function Saved({ savedGames }) {
+  
+  // let removeSaved = () => {
+    function Saved({ savedGames, setSavedGames }) {
+      const [loginUsername, setLoginUsername] = useState("");
+      const [loginPassword, setLoginPassword] = useState("");
+    
+      const user = useContext(Context)
+      console.log(user)
   let removeSaved = (gameid, isSavedSelf) => {
     console.log("I don-t want to go Mr Stark");
     console.log(gameid, isSavedSelf);
