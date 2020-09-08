@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
 import SignUp from "./Components/Pages/SignUp";
@@ -11,9 +16,11 @@ import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
 import AddGame from "./Components/Pages/AddGame";
+import Profile from "./Components/Pages/Profile";
+import CourseList from "./Components/Pages/CourseList";
 import gameSeed from "../src/card.json";
-import 'antd/dist/antd.css';
-export const Context = React.createContext({user: "", setUser: () => {}});
+import "antd/dist/antd.css";
+export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -23,19 +30,18 @@ function App() {
   const [games, setGames] = useState([...gameSeed]);
 
   const [savedGames, setSavedGames] = useState([games[0], games[2]]);
-  
+
   const [data, setData] = useState({
     user: "",
     setUser: (userName) => {
-      setData({...data, user: userName})
-      setUserName(userName)
-      !userName ? setIsLogged(false) : setIsLogged(true) 
-    }
+      setData({ ...data, user: userName });
+      setUserName(userName);
+      !userName ? setIsLogged(false) : setIsLogged(true);
+    },
   });
 
-  function loggedUser () {
-    console.log("loggedUser")
-
+  function loggedUser() {
+    console.log("loggedUser");
   }
 
   function PrivateRoute({ children, ...rest }) {
@@ -48,7 +54,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: "/login"
+                pathname: "/login",
               }}
             />
           )
@@ -57,62 +63,72 @@ function App() {
     );
   }
 
-
   return (
     <div className={isLogged ? "main logged" : "main"}>
       <Context.Provider value={data}>
-      <Router>
-        <NavBar
-          isLogged={isLogged}
-          userName={userName}
-          savedGames={savedGames}
-        />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home
-                isLogged={isLogged}
-                games={games}
-                savedGames={savedGames}
-                setSavedGames={setSavedGames}
-              />
-            )}
-          />
-          <Route 
-          exact path="/login" 
-          render={() => (
-            <Login
+        <Router>
+          <NavBar
             isLogged={isLogged}
-            loggedUser={loggedUser} 
+            userName={userName}
+            savedGames={savedGames}
+          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home
+                  isLogged={isLogged}
+                  games={games}
+                  savedGames={savedGames}
+                  setSavedGames={setSavedGames}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/login"
+              render={() =>
+                isLogged ? (
+                  <Redirect to={{ pathname: "/profile" }} />
+                ) : (
+                  <Login
+                    isLogged={isLogged}
+                    setIsLogged={setIsLogged}
+                    loggedUser={loggedUser}
+                  />
+                )
+              }
+            />
+            <Route exact path="/signup" component={SignUp} />
+            <PrivateRoute>
+              <Route
+                exact
+                path="/saved"
+                render={() => (
+                  <Saved
+                    savedGames={savedGames}
+                    setSavedGames={setSavedGames}
+                  />
+                )}
               />
-            )}  
-          />
-          <Route exact path="/signup" component={SignUp} />
-          <PrivateRoute>
-          <Route
-            exact
-            path="/saved"
-            render={() => (
-              <Saved savedGames={savedGames} setSavedGames={setSavedGames} />
-            )}
-          />
-          <Route
-            exact
-            path="/addgame"
-            component={AddGame}
-          />
-          </PrivateRoute>
-          <Route exact path="/join" component={Join} />
-          <Route
-            path="/game/:id"
-            render={(props) => <Game {...props} games={games} />}
-          />
-          <Route component={Error404} />
-        </Switch>
-        <Footer />
-      </Router>
+              <Route exact path="/addgame" component={AddGame} />
+              <Route
+                exact
+                path="/profile"
+                render={() => <Profile userName={userName} />}
+              />
+              <Route exact path="/courselist" component={CourseList} />
+            </PrivateRoute>
+            <Route exact path="/join" component={Join} />
+            <Route
+              path="/game/:id"
+              render={(props) => <Game {...props} games={games} />}
+            />
+            <Route component={Error404} />
+          </Switch>
+          <Footer />
+        </Router>
       </Context.Provider>
     </div>
   );
