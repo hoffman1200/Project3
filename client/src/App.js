@@ -88,9 +88,17 @@ function App() {
             <Route
               exact
               path="/login"
-              render={() => (
-                <Login isLogged={isLogged} loggedUser={loggedUser} />
-              )}
+              render={() =>
+                isLogged ? (
+                  <Redirect to={{ pathname: "/profile" }} />
+                ) : (
+                  <Login
+                    isLogged={isLogged}
+                    setIsLogged={setIsLogged}
+                    loggedUser={loggedUser}
+                  />
+                )
+              }
             />
             <Route exact path="/signup" component={SignUp} />
             <PrivateRoute>
