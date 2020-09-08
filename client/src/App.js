@@ -20,6 +20,9 @@ import Profile from "./Components/Pages/Profile";
 import CourseList from "./Components/Pages/CourseList";
 import gameSeed from "../src/card.json";
 import "antd/dist/antd.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
@@ -39,6 +42,25 @@ function App() {
       !userName ? setIsLogged(false) : setIsLogged(true);
     },
   });
+
+  function displayToast(message, type) {
+    let options = {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+    if (type === "success") {
+      toast.success(message, options);
+    } else if (type === "error") {
+      toast.error(message, options);
+    } else {
+      console.error("Wrong Toast Type");
+    }
+  }
 
   function loggedUser() {
     console.log("loggedUser");
@@ -100,7 +122,11 @@ function App() {
                 )
               }
             />
-            <Route exact path="/signup" component={SignUp} />
+            <Route
+              exact
+              path="/signup"
+              render={() => <SignUp displayToast={displayToast} />}
+            />
             <PrivateRoute>
               <Route
                 exact
@@ -127,6 +153,7 @@ function App() {
             />
             <Route component={Error404} />
           </Switch>
+          <ToastContainer />
           <Footer />
         </Router>
       </Context.Provider>

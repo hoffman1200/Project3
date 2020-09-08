@@ -6,9 +6,19 @@ import axios from "axios";
 import fireBoyBackground from "../../assets/chewie.mp4";
 import { useHistory } from "react-router-dom";
 
-function SignUp() {
+function SignUp({ displayToast }) {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const success = () => {
+    displayToast(
+      "Successfully Registered. Would you kindly...log in?",
+      "success"
+    );
+  };
+  const fail = () => {
+    displayToast("You've Become a Jill Sandwich. Try Again", "error");
+  };
+
   let history = useHistory();
   const register = (e) => {
     e.preventDefault();
@@ -20,10 +30,16 @@ function SignUp() {
       },
       withCredentials: true,
       url: "http://localhost:3003/api/register",
-    }).then((res) => {
-      history.push("/login");
-      console.log(res.config);
-    });
+    })
+      .then((res) => {
+        success();
+        history.push("/login");
+        console.log(res.config);
+      })
+      .catch((err) => {
+        fail();
+        console.error(err);
+      });
   };
 
   return (
