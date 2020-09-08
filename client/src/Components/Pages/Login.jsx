@@ -9,7 +9,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Context } from "../../App";
 
-function Login({ setIsLogged }) {
+function Login({ setIsLogged, displayToast }) {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -17,6 +17,16 @@ function Login({ setIsLogged }) {
   console.log(user);
 
   let history = useHistory();
+
+  const success = () => {
+    displayToast(
+      "Successfully Logged-in. Would you kindly...log in?",
+      "success"
+    );
+  };
+  const fail = () => {
+    displayToast("You've Become a Jill Sandwich. Try Again", "error");
+  };
 
   const login = (e) => {
     e.preventDefault();
@@ -28,12 +38,18 @@ function Login({ setIsLogged }) {
       },
       withCredentials: true,
       url: "http://localhost:3003/api/login",
-    }).then((res) => {
-      getUser();
-      console.log(res.data);
-      setIsLogged(true);
-      history.push("/profile");
-    });
+    })
+      .then((res) => {
+        getUser();
+        console.log(res.data);
+        setIsLogged(true);
+        success();
+        history.push("/profile");
+      })
+      .catch((err) => {
+        fail();
+        console.error(err);
+      });
   };
 
   const getUser = (e) => {
@@ -42,10 +58,14 @@ function Login({ setIsLogged }) {
       method: "GET",
       withCredentials: true,
       url: "http://localhost:3003/api/user",
-    }).then((res) => {
-      user && user.setUser(res.data);
-      console.log(res.data);
-    });
+    })
+      .then((res) => {
+        user && user.setUser(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Uh oh", err);
+      });
   };
 
   return (

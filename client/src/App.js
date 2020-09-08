@@ -118,6 +118,7 @@ function App() {
                     isLogged={isLogged}
                     setIsLogged={setIsLogged}
                     loggedUser={loggedUser}
+                    displayToast={displayToast}
                   />
                 )
               }
