@@ -20,7 +20,7 @@ function Login({ setIsLogged, displayToast }) {
 
   const success = () => {
     displayToast(
-      "Successfully Logged-in. Would you kindly...log in?",
+      "Successfully Logged-in. Would you kindly...go to your profile?",
       "success"
     );
   };
@@ -42,8 +42,9 @@ function Login({ setIsLogged, displayToast }) {
       .then((res) => {
         getUser();
         console.log(res.data);
-        setIsLogged(true);
-        success();
+        res.data !== "No user exists" ? success() : fail();
+        // setIsLogged(true);
+        // success();
         history.push("/profile");
       })
       .catch((err) => {
