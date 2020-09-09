@@ -3,22 +3,48 @@
   src: local('Minecraft'), url(../../assets/fonts/Minecraft.ttf) format('truetype');
 }
 
-nav {
+.navigationBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 10px solid rgb(0, 0, 65);
   width: 100%;
   height: 80px;
-  background:url(../../assets/space.png);
   z-index: 2;
+  font-family: Minecraft;
+  font-size:xx-large ;
+}
+
+.HomeNav {
+
+  border-bottom: 10px solid rgb(0, 0, 65);
+  background:url(../../assets/space.png); 
+ 
 
 }
 
-.nav-center{
-  font-family: Minecraft;
+.HomeNav-center{
   color:rgb(30,144,255);
-  font-size:xx-large ;
+  margin-top: 30px;
+}
+
+.LoginNav {
+  border-bottom: 10px solid rgb(65, 0, 22);
+  background:url(../../assets/tree.png);
+
+}
+
+.LoginNav-center{
+  color:rgb(132, 240, 173);
+  margin-top: 30px;
+}
+
+.SignupNav {
+  border-bottom: 10px solid rgb(48, 0, 37);
+  background:url(../../assets/punchit.png);
+}
+
+.SignupNav-center{
+  color:rgb(236, 132, 240);
   margin-top: 30px;
 }
 
