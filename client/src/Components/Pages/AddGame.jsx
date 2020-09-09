@@ -6,13 +6,22 @@ import "../../Styles/Pages/AddGame.css";
 import axios from "axios";
 import { Context } from "../../App";
 
-function AddGame() {
+function AddGame({ displayToast }) {
   const [urlGame, setUrlGame] = useState("");
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
   const [category, setCategory] = useState("");
+  const success = () => {
+    displayToast(
+      "How many are there in you? Whose hopes and dreams do you encompass? Your submission was a success!",
+      "success"
+    );
+  };
+  const fail = () => {
+    displayToast("The cake is a lie. Try Again", "error");
+  };
   const user = useContext(Context);
   console.log(user.user.username);
   const newGame = (e) => {
@@ -29,10 +38,16 @@ function AddGame() {
         username: user.user.username,
       },
       url: "http://localhost:3003/api/games",
-    }).then((res) => {
-      console.log(res.data);
-      console.log("New Game Added!");
-    });
+    })
+      .then((res) => {
+        success();
+        console.log(res.data);
+        console.log("New Game Added!");
+      })
+      .catch((err) => {
+        fail();
+        console.error(err);
+      });
   };
 
   return (

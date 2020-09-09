@@ -4,12 +4,12 @@ import Button from "../Elements/Button";
 import greenBackground from "../../assets/greenWalk.mp4";
 import { Input } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { Context } from "../../App";
 
-function Login({ setIsLogged, displayToast }) {
+function Login({ displayToast }) {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -42,9 +42,8 @@ function Login({ setIsLogged, displayToast }) {
       .then((res) => {
         getUser();
         console.log(res.data);
-        res.data !== "No user exists" ? success() : fail();
         // setIsLogged(true);
-        // success();
+        success();
         history.push("/profile");
       })
       .catch((err) => {

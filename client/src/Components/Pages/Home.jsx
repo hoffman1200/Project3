@@ -3,7 +3,7 @@ import "../../Styles/Pages/Home.css";
 import Card from "../Elements/Card";
 import BlueBackground from "../../assets/blueBackground.mp4";
 
-const { Meta } = Card;
+// const { Meta } = Card;
 
 function Home({ isLogged, games, savedGames, setSavedGames }) {
   let toggleSaved = (id, isSaved) => {
@@ -30,14 +30,14 @@ function Home({ isLogged, games, savedGames, setSavedGames }) {
 
   return (
     <div id="home" className={isLogged ? "loggedIn" : "loggedOut"}>
-       <video autoPlay loop muted source src={BlueBackground} type="video/mp4"/>
-      
+      <video autoPlay loop muted source src={BlueBackground} type="video/mp4" />
+
       {games.map((game) => {
         let isSaved = savedGames.includes(game);
 
         return (
           <Card
-          hoverable
+            hoverable
             key={game.id}
             isLogged={true}
             game={game}
