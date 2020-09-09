@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../Styles/Pages/Game.css";
+import axios from "axios";
 
 function Game(props) {
+  let [game, setGame] = useState({});
   const { id } = props.match.params;
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/api/games/" + id,
+    })
+      .then((game) => {
+        console.log("GAME", game);
+        setGame(game.data);
+      })
+      .catch((err) => {
+        console.log("GAME ERROR", err);
+      });
+  }, []);
   return (
     <>
-      {/* Replace this with server call by Id */}
-      <h2>{props.games[id - 1].title}</h2>
+      <h2>{game.title}</h2>
+      <p>{game.description}</p>
       <iframe
-        title={props.games[id - 1].title}
-        src={props.games[id - 1].URL}
+        title={game.title}
+        src={game.url}
         frameborder="0"
         width="1000px"
         height="700px"
       ></iframe>
+      <p>{game.instructions}</p>
     </>
   );
 }

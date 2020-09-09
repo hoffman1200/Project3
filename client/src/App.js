@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -17,17 +17,17 @@ import Error404 from "./Components/Pages/Error404";
 import AddGame from "./Components/Pages/AddGame";
 import Profile from "./Components/Pages/Profile";
 import CourseList from "./Components/Pages/CourseList";
-import gameSeed from "../src/card.json";
 import "antd/dist/antd.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
   const [userName, setUserName] = useState("");
 
-  const [games] = useState([...gameSeed]);
+  const [games, setGames] = useState([]);
 
   const [savedGames, setSavedGames] = useState([games[0], games[2]]);
 
@@ -43,6 +43,19 @@ function App() {
   const [isLogged, setIsLogged] = useState(
     JSON.parse(localStorage.getItem("isLogged"))
   );
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/api/games",
+    })
+      .then((games) => {
+        console.log("GAMES", games);
+        setGames(games.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   function displayToast(message, type) {
     let options = {
