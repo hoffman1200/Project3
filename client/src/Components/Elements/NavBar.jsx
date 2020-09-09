@@ -1,19 +1,15 @@
 import React from "react";
 import "../../Styles/Elements/NavBar.css";
-import { Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 import Logo from "../../assets/logo.png";
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../../App";
 import "../../assets/fonts/Minecraft.ttf";
-import { useEffect } from "react";
-
-
 
 function NavBar({ isLogged, userName, savedGames }) {
   const user = useContext(Context);
-  const [currentClass, setCurrentClass]= useState("");
   console.log(isLogged);
   console.log(userName);
   useLocation();
@@ -55,7 +51,6 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "HomeNav-center";
     }
   }
-
 
   return (
     <>

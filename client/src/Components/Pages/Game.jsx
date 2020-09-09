@@ -8,6 +8,7 @@ function Game(props) {
       {/* Replace this with server call by Id */}
       <h2>{props.games[id - 1].title}</h2>
       <iframe
+        title={props.games[id - 1].title}
         src={props.games[id - 1].URL}
         frameborder="0"
         width="1000px"
