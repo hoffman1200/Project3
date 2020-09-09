@@ -38,6 +38,12 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "LoginNav";
       case "/signup":
         return "SignupNav";
+      case "/profile":
+        return "ProfileNav";
+      case "/addgame":
+        return "addNav";
+      case "/saved":
+        return "savedNav";
       default:
         return "HomeNav";
     }
@@ -51,6 +57,12 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "LoginNav-center";
       case "/signup":
         return "SignupNav-center";
+      case "/profile":
+        return "ProfileNav-center";
+      case "/addgame":
+        return "addNav-center";
+      case "/saved":
+        return "savedNav-center";
       default:
         return "HomeNav-center";
     }
@@ -97,6 +109,7 @@ function NavBar({ isLogged, userName, savedGames }) {
               <Link to="/login">
                 <Button>Login</Button>
               </Link>
+              &nbsp;
               <Link to="/signup">
                 <Button>Sign Up</Button>
               </Link>

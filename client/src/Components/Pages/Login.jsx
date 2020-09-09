@@ -88,22 +88,24 @@ function Login({ setIsLogged, displayToast }) {
 
         </form> */}
 
-      <form onSubmit={login}>
+      <form className="login-form" onSubmit={login}>
         <Input
           onChange={(event) => setLoginUsername(event.target.value)}
           prefix={<UserOutlined />}
           placeholder="Username"
         />
+         &nbsp;
         <Input
           onChange={(event) => setLoginPassword(event.target.value)}
           prefix={<LockOutlined />}
           type="password"
           placeholder="Password"
         />
+         &nbsp;&nbsp;
         <Button htmlType="submit">Submit</Button>
         {/* <Button onClick={getUser}>Get User</Button> */}
       </form>
-      {user.user ? <h1>Hello {user.user.username}</h1> : null}
+      <div className="helloHAL" >{user.user ? <h1>Hello {user.user.username}</h1> : null}</div>
     </>
   );
 }

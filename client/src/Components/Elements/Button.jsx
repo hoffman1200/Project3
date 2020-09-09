@@ -9,7 +9,7 @@ function Button(props) {
       {/* <button className="button" onClick={props.onClick}> {props.children} </button> */}
 
     <AntButton htmlType={props.htmlType} type="info" onClick={props.onClick}>
-      <p> {props.children} </p>
+      <p className="buttonFont"> {props.children} </p>
     </AntButton>
 
     </>

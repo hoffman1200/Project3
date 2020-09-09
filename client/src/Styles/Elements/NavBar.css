@@ -48,6 +48,36 @@
   margin-top: 30px;
 }
 
+.ProfileNav {
+  border-bottom: 10px solid rgb(214, 52, 179);
+  background:url(../../assets/sky.png);
+}
+
+.ProfileNav-center{
+  color:rgb(243, 20, 232);
+  margin-top: 30px;
+}
+
+.addNav {
+  border-bottom: 10px solid rgb(44, 4, 82);
+  background:url(../../assets/profile.png);
+}
+
+.addNav-center{
+  color:rgb(59, 167, 230);
+  margin-top: 30px;
+}
+
+.savedNav {
+  border-bottom: 10px solid rgb(109, 9, 67);
+  background:url(../../assets/thor.png);
+}
+
+.savedNav-center{
+  color:rgb(40, 161, 197);
+  margin-top: 30px;
+}
+
 .nav-logo {
   max-height: 70px;
   padding: 3px;
