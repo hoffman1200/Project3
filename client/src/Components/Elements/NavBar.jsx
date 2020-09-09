@@ -1,17 +1,22 @@
 import React from "react";
 import "../../Styles/Elements/NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import Button from "./Button";
 import Logo from "../../assets/logo.png";
 import axios from "axios";
 import { useState, useContext } from "react";
 import { Context } from "../../App";
 import "../../assets/fonts/Minecraft.ttf";
+import { useEffect } from "react";
+
+
 
 function NavBar({ isLogged, userName, savedGames }) {
   const user = useContext(Context);
+  const [currentClass, setCurrentClass]= useState("");
   console.log(isLogged);
   console.log(userName);
+  useLocation();
 
   const logOut = (e) => {
     e.preventDefault();
@@ -25,18 +30,45 @@ function NavBar({ isLogged, userName, savedGames }) {
     });
   };
 
+  function customClass() {
+    const location = window.location.pathname;
+    console.log(location);
+    switch (location) {
+      case "/login":
+        return "LoginNav";
+      case "/signup":
+        return "SignupNav";
+      default:
+        return "HomeNav";
+    }
+  }
+
+  function fontClass() {
+    const location = window.location.pathname;
+    console.log(location);
+    switch (location) {
+      case "/login":
+        return "LoginNav-center";
+      case "/signup":
+        return "SignupNav-center";
+      default:
+        return "HomeNav-center";
+    }
+  }
+
+
   return (
     <>
-      <nav className="navigationBar">
+      <nav className={`navigationBar ${customClass()}`}>
         <div className="nav-left">
           <Link to="/">
             <img src={Logo} className="nav-logo" alt="..." />
           </Link>
         </div>
 
-        <div className="nav-center">
+        <div className={`Nav-center" ${fontClass()}`}>
           <p>
-            Gamer Dash{" "}
+            Gamer Dash
             {/* {savedGames.map((sg) => {
               return <>{sg.id}</>;
             })} */}
