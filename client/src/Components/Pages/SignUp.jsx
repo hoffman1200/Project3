@@ -31,7 +31,7 @@ function SignUp({ displayToast }) {
         password: registerPassword,
       },
       withCredentials: true,
-      url: "http://localhost:3003/api/register",
+      url: "http://localhost:3001/api/register",
     })
       .then((res) => {
         success();

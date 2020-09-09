@@ -19,7 +19,7 @@ function NavBar({ isLogged, userName, savedGames }) {
     axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:3003/api/logout",
+      url: "http://localhost:3001/api/logout",
     }).then((res) => {
       user && user.setUser("");
       console.log(res.data);
