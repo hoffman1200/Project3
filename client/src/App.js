@@ -11,7 +11,6 @@ import Login from "./Components/Pages/Login";
 import SignUp from "./Components/Pages/SignUp";
 import NavBar from "./Components/Elements/NavBar";
 import Footer from "./Components/Elements/Footer";
-import Join from "./Components/Pages/Join";
 import Saved from "./Components/Pages/Saved";
 import Game from "./Components/Pages/Game";
 import Error404 from "./Components/Pages/Error404";
@@ -68,26 +67,26 @@ function App() {
     console.log("loggedUser");
   }
 
-  function PrivateRoute({ children, ...rest }) {
-    console.log(isLogged);
-    console.log(rest.isLogged);
-    return (
-      <Route
-        {...rest}
-        render={() =>
-          isLogged ? (
-            children
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
+  // function PrivateRoute({ children, ...rest }) {
+  //   console.log(isLogged);
+  //   console.log(rest.isLogged);
+  //   return (
+  //     <Route
+  //       {...rest}
+  //       render={() =>
+  //         isLogged ? (
+  //           children
+  //         ) : (
+  //           <Redirect
+  //             to={{
+  //               pathname: "/login",
+  //             }}
+  //           />
+  //         )
+  //       }
+  //     />
+  //   );
+  // }
 
   return (
     <div className={isLogged ? "main logged" : "main"}>
@@ -132,30 +131,53 @@ function App() {
               path="/signup"
               render={() => <SignUp displayToast={displayToast} />}
             />
-            <PrivateRoute>
-              <Route
-                exact
-                path="/saved"
-                render={() => (
+            <Route
+              exact
+              path="/saved"
+              render={() =>
+                isLogged ? (
                   <Saved
                     savedGames={savedGames}
                     setSavedGames={setSavedGames}
                   />
-                )}
-              />
-              <Route
-                exact
-                path="/addgame"
-                render={() => <AddGame displayToast={displayToast} />}
-              />
-              <Route
-                exact
-                path="/profile"
-                render={() => <Profile userName={userName} />}
-              />
-              <Route exact path="/courselist" component={CourseList} />
-            </PrivateRoute>
-            <Route exact path="/join" component={Join} />
+                ) : (
+                  <Redirect to={{ pathname: "/login" }} />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/addgame"
+              render={() =>
+                isLogged ? (
+                  <AddGame displayToast={displayToast} />
+                ) : (
+                  <Redirect to={{ pathname: "/login" }} />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/profile"
+              render={() =>
+                isLogged ? (
+                  <Profile userName={userName} />
+                ) : (
+                  <Redirect to={{ pathname: "/login" }} />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/courselist"
+              render={() =>
+                isLogged ? (
+                  <CourseList />
+                ) : (
+                  <Redirect to={{ pathname: "/login" }} />
+                )
+              }
+            />
             <Route
               path="/game/:id"
               render={(props) => <Game {...props} games={games} />}
