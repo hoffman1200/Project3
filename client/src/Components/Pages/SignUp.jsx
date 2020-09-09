@@ -3,6 +3,8 @@ import "../../Styles/Pages/SignUp.css";
 // import { Link } from "react-router-dom";
 import Button from "../Elements/Button";
 import axios from "axios";
+import { Input } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import fireBoyBackground from "../../assets/chewie.mp4";
 import { useHistory } from "react-router-dom";
 
@@ -55,15 +57,19 @@ function SignUp({ displayToast }) {
       />
       <form className="signUp-form">
         <p>Create Your Account</p>
-        <input
+        <Input
           placeholder="Username"
+          prefix={<UserOutlined />}
           onChange={(event) => setRegisterUsername(event.target.value)}
         />
-        <input
+         &nbsp;
+        <Input
           placeholder="Password"
           type="password"
+          prefix={<LockOutlined />}
           onChange={(event) => setRegisterPassword(event.target.value)}
         />
+         &nbsp;
         <Button onClick={register}>Create Account</Button>
       </form>
     </>
