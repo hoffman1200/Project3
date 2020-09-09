@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: local('Minecraft'), url(../../assets/fonts/Minecraft.ttf) format('truetype');
+  }
+
+h3{
+    color: rgb(243, 20, 232) !important;
+}
+
+.profileVideo {
+    object-fit: cover;
+    width: 100vw;
+    height: 95vh;
+    position: fixed;
+    top :0;
+    left: 0;
+    z-index: 1;
+}
+
+.profile-card {
+    z-index: 2;
+    font-family: Minecraft;
+    font-size:medium;
+    color: white;
+}
+
+.profile-username {
+    z-index: 2;
+    color: rgb(250, 174, 244)
+}
+

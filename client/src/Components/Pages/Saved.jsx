@@ -3,6 +3,7 @@ import "../../Styles/Pages/Saved.css";
 import Card from "../Elements/Card";
 import { useContext } from "react";
 import { Context } from "../../App";
+import ryanBackground from "../../assets/thor.mp4";
 
 function Saved({ savedGames, setSavedGames }) {
   const user = useContext(Context);
@@ -17,6 +18,16 @@ function Saved({ savedGames, setSavedGames }) {
     setSavedGames(remainingGames);
   };
   return (
+    <>
+    <video
+        className="ryanVideo"
+        autoPlay
+        loop
+        muted
+        source
+        src={ryanBackground}
+        type="video/mp4"
+      />
     <div id="saved">
       {savedGames.map((game) => {
         return (
@@ -30,6 +41,7 @@ function Saved({ savedGames, setSavedGames }) {
         );
       })}
     </div>
+    </>
   );
 }
 
