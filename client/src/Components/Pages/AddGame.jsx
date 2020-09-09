@@ -37,7 +37,7 @@ function AddGame({ displayToast }) {
         category: category,
         username: user.user.username,
       },
-      url: "http://localhost:3003/api/games",
+      url: "http://localhost:3001/api/games",
     })
       .then((res) => {
         success();

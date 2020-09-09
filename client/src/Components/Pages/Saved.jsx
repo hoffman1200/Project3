@@ -12,7 +12,7 @@ function Saved({ savedGames, setSavedGames }) {
     console.log("I don-t want to go Mr Stark");
     console.log(gameid, isSavedSelf);
     let remainingGames = savedGames.filter((sgame) => {
-      return sgame.id !== parseInt(gameid);
+      return sgame._id !== parseInt(gameid);
     });
     setSavedGames(remainingGames);
   };
@@ -21,7 +21,7 @@ function Saved({ savedGames, setSavedGames }) {
       {savedGames.map((game) => {
         return (
           <Card
-            key={game.id}
+            key={game._id}
             isLogged={true}
             game={game}
             isSaved={true}

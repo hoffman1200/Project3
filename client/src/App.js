@@ -29,7 +29,7 @@ function App() {
 
   const [games, setGames] = useState([]);
 
-  const [savedGames, setSavedGames] = useState([games[0], games[2]]);
+  const [savedGames, setSavedGames] = useState([]);
 
   const [data, setData] = useState({
     user: "",

@@ -37,7 +37,7 @@ function Login({ displayToast }) {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "http://localhost:3003/api/login",
+      url: "http://localhost:3001/api/login",
     })
       .then((res) => {
         getUser();
@@ -57,7 +57,7 @@ function Login({ displayToast }) {
     axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:3003/api/user",
+      url: "http://localhost:3001/api/user",
     })
       .then((res) => {
         user && user.setUser(res.data);
