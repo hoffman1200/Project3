@@ -26,22 +26,23 @@ import "react-toastify/dist/ReactToastify.css";
 export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
-
+  
   const [userName, setUserName] = useState("");
-
+  
   const [games, setGames] = useState([...gameSeed]);
-
+  
   const [savedGames, setSavedGames] = useState([games[0], games[2]]);
-
+  
   const [data, setData] = useState({
     user: "",
     setUser: (userName) => {
       setData({ ...data, user: userName });
       setUserName(userName);
-      !userName ? setIsLogged(false) : setIsLogged(true);
+      userName ? setIsLogged(true) : setIsLogged(false);
+      localStorage.setItem("isLogged", JSON.stringify(userName? true : false))
     },
   });
+  const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("isLogged")));
 
   function displayToast(message, type) {
     let options = {
@@ -67,7 +68,10 @@ function App() {
   }
 
   function PrivateRoute({ children, ...rest }) {
+    console.log(isLogged)
+    console.log(rest.isLogged)
     return (
+
       <Route
         {...rest}
         render={() =>
