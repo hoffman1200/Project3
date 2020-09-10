@@ -3,11 +3,9 @@ import "../../Styles/Pages/Home.css";
 import Card from "../Elements/Card";
 import BlueBackground from "../../assets/blueBackground.mp4";
 
-const { Meta } = Card;
-
 function Home({ isLogged, games, savedGames, setSavedGames }) {
-  let toggleSaved = (id, isSaved) => {
-    if (isSaved) {
+  let toggleSaved = (id, needSave) => {
+    if (!needSave) {
       let remainingGames = savedGames.filter((sgame) => {
         return sgame.id !== parseInt(id);
       });
@@ -16,30 +14,31 @@ function Home({ isLogged, games, savedGames, setSavedGames }) {
       setSavedGames(remainingGames);
     } else {
       let newSavedGame = games.filter((game) => {
-        if (game.id === parseInt(id)) {
+        console.log("Game Id", id, game._id, game._id === id);
+        if (game._id === id) {
           return true;
         } else {
           return false;
         }
       });
+      // console.log("SAVED Games", id, needSave, games, newSavedGame);
       let newSavedGames = [...savedGames].concat(newSavedGame);
-      console.log(newSavedGames);
       setSavedGames(newSavedGames);
     }
   };
 
   return (
     <div id="home" className={isLogged ? "loggedIn" : "loggedOut"}>
-       <video autoPlay loop muted source src={BlueBackground} type="video/mp4"/>
-      
+      <video autoPlay loop muted source src={BlueBackground} type="video/mp4" />
+
       {games.map((game) => {
         let isSaved = savedGames.includes(game);
 
         return (
           <Card
-          hoverable
+            hoverable
             key={game.id}
-            isLogged={true}
+            isLogged={isLogged}
             game={game}
             isSaved={isSaved}
             toggleSaved={toggleSaved}

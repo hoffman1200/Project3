@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: local('Minecraft'), url(../../assets/fonts/Minecraft.ttf) format('truetype');
+  }
+
 .greenVideo {
     object-fit: cover;
     width: 100vw;
@@ -11,3 +16,18 @@
 form{
     z-index: 2;
 }
+
+.helloHAL {
+    z-index: 3;
+    font-family: Minecraft;
+    font-size:xx-large ;
+    color:rgb(236, 132, 240);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index:2;
+  }

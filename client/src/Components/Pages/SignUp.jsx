@@ -3,12 +3,24 @@ import "../../Styles/Pages/SignUp.css";
 // import { Link } from "react-router-dom";
 import Button from "../Elements/Button";
 import axios from "axios";
+import { Input } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import fireBoyBackground from "../../assets/chewie.mp4";
 import { useHistory } from "react-router-dom";
 
-function SignUp() {
+function SignUp({ displayToast }) {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const success = () => {
+    displayToast(
+      "Successfully Registered. Would you kindly...log in?",
+      "success"
+    );
+  };
+  const fail = () => {
+    displayToast("You've Become a Jill Sandwich. Try Again", "error");
+  };
+
   let history = useHistory();
   const register = (e) => {
     e.preventDefault();
@@ -19,11 +31,17 @@ function SignUp() {
         password: registerPassword,
       },
       withCredentials: true,
-      url: "http://localhost:3003/api/register",
-    }).then((res) => {
-      history.push("/login");
-      console.log(res.config);
-    });
+      url: "http://localhost:3001/api/register",
+    })
+      .then((res) => {
+        success();
+        history.push("/login");
+        console.log(res.config);
+      })
+      .catch((err) => {
+        fail();
+        console.error(err);
+      });
   };
 
   return (
@@ -39,15 +57,19 @@ function SignUp() {
       />
       <form className="signUp-form">
         <p>Create Your Account</p>
-        <input
+        <Input
           placeholder="Username"
+          prefix={<UserOutlined />}
           onChange={(event) => setRegisterUsername(event.target.value)}
         />
-        <input
+         &nbsp;
+        <Input
           placeholder="Password"
           type="password"
+          prefix={<LockOutlined />}
           onChange={(event) => setRegisterPassword(event.target.value)}
         />
+         &nbsp;
         <Button onClick={register}>Create Account</Button>
       </form>
     </>
