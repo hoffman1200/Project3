@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: local('Minecraft'), url(../../assets/fonts/Minecraft.ttf) format('truetype');
+  }
+
+.buttonFont{ 
+    font-family: Minecraft;
+    font-size:medium;
+    color: #191970;
+    
+}
