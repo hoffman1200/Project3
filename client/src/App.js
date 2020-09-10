@@ -26,7 +26,8 @@ export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
   const [userName, setUserName] = useState("");
-
+  const [userId, setUserId] = useState("");
+  const [userAvatar , setUserAvatar] = useState("");
   const [games, setGames] = useState([]);
 
   const [savedGames, setSavedGames] = useState([]);
@@ -40,6 +41,9 @@ function App() {
       localStorage.setItem("isLogged", JSON.stringify(userName ? true : false));
     },
   });
+
+  console.log("DATA ON APP.JS:", data);
+
   const [isLogged, setIsLogged] = useState(
     JSON.parse(localStorage.getItem("isLogged"))
   );
@@ -80,27 +84,6 @@ function App() {
     console.log("loggedUser");
   }
 
-  // function PrivateRoute({ children, ...rest }) {
-  //   console.log(isLogged);
-  //   console.log(rest.isLogged);
-  //   return (
-  //     <Route
-  //       {...rest}
-  //       render={() =>
-  //         isLogged ? (
-  //           children
-  //         ) : (
-  //           <Redirect
-  //             to={{
-  //               pathname: "/login",
-  //             }}
-  //           />
-  //         )
-  //       }
-  //     />
-  //   );
-  // }
-
   return (
     <div className={isLogged ? "main logged" : "main"}>
       <Context.Provider value={data}>
@@ -120,6 +103,7 @@ function App() {
                   games={games}
                   savedGames={savedGames}
                   setSavedGames={setSavedGames}
+                  data={data}
                 />
               )}
             />
@@ -147,15 +131,17 @@ function App() {
             <Route
               exact
               path="/saved"
-              render={() =>
-                isLogged ? (
+              render={
+                () => (
+                  // isLogged ? (
                   <Saved
                     savedGames={savedGames}
                     setSavedGames={setSavedGames}
                   />
-                ) : (
-                  <Redirect to={{ pathname: "/login" }} />
                 )
+                // ) : (
+                //   <Redirect to={{ pathname: "/login" }} />
+                // )
               }
             />
             <Route

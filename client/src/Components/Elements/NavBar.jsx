@@ -10,8 +10,8 @@ import "../../assets/fonts/Minecraft.ttf";
 
 function NavBar({ isLogged, userName, savedGames }) {
   const user = useContext(Context);
-  console.log(isLogged);
-  console.log(userName);
+  console.log("Is Logged?", isLogged);
+  console.log("Username:", userName);
   useLocation();
 
   const logOut = (e) => {
@@ -28,7 +28,6 @@ function NavBar({ isLogged, userName, savedGames }) {
 
   function customClass() {
     const location = window.location.pathname;
-    console.log(location);
     switch (location) {
       case "/login":
         return "LoginNav";
@@ -40,6 +39,8 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "addNav";
       case "/saved":
         return "savedNav";
+      case "/courselist":
+        return "courseNav";
       default:
         return "HomeNav";
     }
@@ -47,7 +48,6 @@ function NavBar({ isLogged, userName, savedGames }) {
 
   function fontClass() {
     const location = window.location.pathname;
-    console.log(location);
     switch (location) {
       case "/login":
         return "LoginNav-center";
@@ -59,6 +59,8 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "addNav-center";
       case "/saved":
         return "savedNav-center";
+      case "/courselist":
+        return "courseNav-center";
       default:
         return "HomeNav-center";
     }
@@ -86,6 +88,7 @@ function NavBar({ isLogged, userName, savedGames }) {
           {isLogged ? (
             <>
               <p className="username">{userName.username}</p>
+              &nbsp;
               <Link to="/saved">
                 <Button>My Saved Games</Button>
               </Link>
@@ -95,9 +98,11 @@ function NavBar({ isLogged, userName, savedGames }) {
               <Link to="/profile">
                 <Button>Your Profile</Button>
               </Link>
+              <div>
               {/* <Link to="/logout"> */}
               <Button onClick={logOut}>Log Out</Button>
               {/* </Link> */}
+              </div>
             </>
           ) : (
             <>

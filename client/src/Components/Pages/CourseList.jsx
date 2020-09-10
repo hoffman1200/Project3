@@ -1,10 +1,20 @@
 import React from "react";
 import "../../Styles/Pages/CourseList.css";
 import { Link } from "react-router-dom";
+import rocketBackground from "../../assets/blade.mp4";
 
 function CourseList() {
   return (
     <div>
+      <video
+        className="rocketVideo"
+        autoPlay
+        loop
+        muted
+        source
+        src={rocketBackground}
+        type="video/mp4"
+      />
       <h1>
         We Scoured the Internet to find you Free and Paid Online Game
         Development Courses
