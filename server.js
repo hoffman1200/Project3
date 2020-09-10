@@ -6,10 +6,8 @@ const routes = require("./routes");
 const app = express();
 const cors = require("cors");
 const passport = require("passport");
-const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3003;
 
 // Define middleware here
