@@ -120,6 +120,7 @@ function App() {
                   games={games}
                   savedGames={savedGames}
                   setSavedGames={setSavedGames}
+                  data={data}
                 />
               )}
             />

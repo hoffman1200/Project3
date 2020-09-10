@@ -1,20 +1,20 @@
 import React from "react";
 import "../../Styles/Pages/Home.css";
 import Card from "../Elements/Card";
+import axios from "axios";
 import BlueBackground from "../../assets/blueBackground.mp4";
 
-function Home({ isLogged, games, savedGames, setSavedGames }) {
+function Home({ isLogged, games, savedGames, setSavedGames, data }) {
   let toggleSaved = (id, needSave) => {
     if (!needSave) {
       let remainingGames = savedGames.filter((sgame) => {
-        return sgame.id !== parseInt(id);
+        return sgame.id !== id;
       });
 
       console.log(remainingGames);
       setSavedGames(remainingGames);
     } else {
       let newSavedGame = games.filter((game) => {
-        console.log("Game Id", id, game._id, game._id === id);
         if (game._id === id) {
           return true;
         } else {
@@ -24,8 +24,18 @@ function Home({ isLogged, games, savedGames, setSavedGames }) {
       // console.log("SAVED Games", id, needSave, games, newSavedGame);
       let newSavedGames = [...savedGames].concat(newSavedGame);
       setSavedGames(newSavedGames);
+      axios({
+        method: "put",
+        data: {
+          savedGames: newSavedGames,
+        },
+        url: "http://localhost:3001/api/register" + data.user.id,
+      }).then((res) => {
+        console.log(res.data);
+      });
     }
   };
+  // this function needs to go inside the newSavedGame filter
 
   return (
     <div id="home" className={isLogged ? "loggedIn" : "loggedOut"}>
