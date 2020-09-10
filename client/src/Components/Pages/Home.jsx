@@ -3,20 +3,20 @@ import "../../Styles/Pages/Home.css";
 import Card from "../Elements/Card";
 import BlueBackground from "../../assets/blueBackground.mp4";
 
-// const { Meta } = Card;
-
 function Home({ isLogged, games, savedGames, setSavedGames }) {
+  
   let toggleSaved = (id, isSaved) => {
+    console.log(id);
+    console.log(isSaved);
     if (isSaved) {
       let remainingGames = savedGames.filter((sgame) => {
-        return sgame.id !== parseInt(id);
+        return sgame._id !== parseInt(id);
       });
-
       console.log(remainingGames);
       setSavedGames(remainingGames);
     } else {
       let newSavedGame = games.filter((game) => {
-        if (game.id === parseInt(id)) {
+        if (game._id === parseInt(id)) {
           return true;
         } else {
           return false;
@@ -38,7 +38,7 @@ function Home({ isLogged, games, savedGames, setSavedGames }) {
         return (
           <Card
             hoverable
-            key={game.id}
+            key={game._id}
             isLogged={true}
             game={game}
             isSaved={isSaved}

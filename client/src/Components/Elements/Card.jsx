@@ -7,7 +7,8 @@ function Card({ game, isSaved, toggleSaved, isLogged }) {
   const [isSavedSelf, setIsSavedSelf] = useState(isSaved);
 
   let toggleSavedSelf = () => {
-    toggleSaved(game._id, isSavedSelf);
+    toggleSaved(game._id, !isSavedSelf);
+    console.log(game._id, !isSavedSelf);
     setIsSavedSelf(!isSavedSelf);
   };
 
