@@ -147,15 +147,17 @@ function App() {
             <Route
               exact
               path="/saved"
-              render={() =>
-                isLogged ? (
+              render={
+                () => (
+                  // isLogged ? (
                   <Saved
                     savedGames={savedGames}
                     setSavedGames={setSavedGames}
                   />
-                ) : (
-                  <Redirect to={{ pathname: "/login" }} />
                 )
+                // ) : (
+                //   <Redirect to={{ pathname: "/login" }} />
+                // )
               }
             />
             <Route
