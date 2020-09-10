@@ -56,7 +56,7 @@ function SignUp({ displayToast }) {
         type="video/mp4"
       />
       <form className="signUp-form">
-        <p>Create Your Account</p>
+        <p className="signP">Enter Details</p>
         <Input
           placeholder="Username"
           prefix={<UserOutlined />}
