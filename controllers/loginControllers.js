@@ -22,7 +22,14 @@ module.exports = {
       else {
         req.logIn(user, (err) => {
           if (err) throw err;
-          res.send("Successfully Authenticated");
+          res.send({
+            message: "Successfully Authenticated",
+            user: {
+              username: user.username,
+              id: user._id,
+              savedGames: user.savedGames,
+            },
+          });
           console.log(req.user);
         });
       }
