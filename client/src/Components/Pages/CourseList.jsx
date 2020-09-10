@@ -5,7 +5,7 @@ import rocketBackground from "../../assets/blade.mp4";
 
 function CourseList() {
   return (
-    <div>
+    <div id="courses">
       <video
         className="rocketVideo"
         autoPlay

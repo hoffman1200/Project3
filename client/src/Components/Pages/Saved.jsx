@@ -1,25 +1,46 @@
 import React from "react";
 import "../../Styles/Pages/Saved.css";
 import Card from "../Elements/Card";
-import { useContext } from "react";
-import { Context } from "../../App";
+// import { useContext } from "react";
+// import { Context } from "../../App";
+import axios from "axios";
 import ryanBackground from "../../assets/thor.mp4";
 
-function Saved({ savedGames, setSavedGames }) {
-  const user = useContext(Context);
-  console.log("Saved", user, savedGames);
-
+function Saved({ games, savedGames, setSavedGames, userId }) {
   let removeSaved = (gameid, isSavedSelf) => {
-    console.log("I don-t want to go Mr Stark");
-    console.log(gameid, isSavedSelf);
-    let remainingGames = savedGames.filter((sgame) => {
-      return sgame._id !== gameid;
+    // console.log("I don't want to go Mr Stark");
+    // console.log(gameid, isSavedSelf);
+    let remainingGames = savedGames.filter((sgameId) => {
+      return sgameId !== gameid;
     });
     setSavedGames(remainingGames);
+    updateServerSavedGames(remainingGames, userId);
   };
+
+  const updateServerSavedGames = (savedGames, userId) => {
+    axios({
+      method: "PUT",
+      data: {
+        savedGames,
+      },
+      withCredentials: true,
+      url: "http://localhost:3001/api/register/" + userId,
+    }).then((res) => {
+      console.log("LOOK HERE!!", res.data);
+    });
+  };
+
+  let displayGames = games.filter((g) => {
+    if (
+      savedGames.some((sg) => {
+        return sg === g._id;
+      })
+    ) {
+      return g;
+    }
+  });
   return (
     <>
-      <p>Random text</p>
       <video
         className="ryanVideo"
         autoPlay
@@ -30,7 +51,7 @@ function Saved({ savedGames, setSavedGames }) {
         type="video/mp4"
       />
       <div id="saved">
-        {savedGames.map((game) => {
+        {displayGames.map((game) => {
           return (
             <Card
               key={game._id}
