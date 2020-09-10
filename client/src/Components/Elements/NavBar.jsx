@@ -40,6 +40,8 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "addNav";
       case "/saved":
         return "savedNav";
+      case "/courselist":
+        return "courseNav";
       default:
         return "HomeNav";
     }
@@ -59,6 +61,8 @@ function NavBar({ isLogged, userName, savedGames }) {
         return "addNav-center";
       case "/saved":
         return "savedNav-center";
+      case "/courselist":
+        return "courseNav-center";
       default:
         return "HomeNav-center";
     }
@@ -86,6 +90,7 @@ function NavBar({ isLogged, userName, savedGames }) {
           {isLogged ? (
             <>
               <p className="username">{userName.username}</p>
+              &nbsp;
               <Link to="/saved">
                 <Button>My Saved Games</Button>
               </Link>
@@ -95,9 +100,11 @@ function NavBar({ isLogged, userName, savedGames }) {
               <Link to="/profile">
                 <Button>Your Profile</Button>
               </Link>
+              <div>
               {/* <Link to="/logout"> */}
               <Button onClick={logOut}>Log Out</Button>
               {/* </Link> */}
+              </div>
             </>
           ) : (
             <>
