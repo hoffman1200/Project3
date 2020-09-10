@@ -8,7 +8,6 @@ const cors = require("cors");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
