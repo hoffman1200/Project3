@@ -1,3 +1,10 @@
+.signP{
+  font-family: Minecraft;
+  font-size:large;
+  color: #f3f3f7;
+  z-index:3;
+}
+
 .signUp-form {
   display: flex;
   flex-direction: column;
