@@ -39,7 +39,7 @@ function Home({ isLogged, games, savedGames, setSavedGames }) {
           <Card
             hoverable
             key={game.id}
-            isLogged={true}
+            isLogged={isLogged}
             game={game}
             isSaved={isSaved}
             toggleSaved={toggleSaved}
