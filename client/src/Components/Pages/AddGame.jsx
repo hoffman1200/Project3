@@ -33,7 +33,6 @@ function AddGame({ displayToast }) {
     displayToast("The cake is a lie. Try Again", "error");
   };
   const user = useContext(Context);
-  console.log(user.user.username);
   const newGame = (e) => {
     e.preventDefault();
     axios({

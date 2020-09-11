@@ -80,17 +80,10 @@ function Login({ displayToast }) {
         autoPlay
         loop
         muted
-        source
+        source="true"
         src={greenBackground}
         type="video/mp4"
       />
-
-      {/* <form onSubmit={login}>
-        <input placeholder="username" onChange={event => setLoginUsername(event.target.value)}/>
-        <input placeholder="password" type="password" onChange={event => setLoginPassword(event.target.value)}/>
-        <Button onClick={getUser}>Submit</Button>
-
-        </form> */}
 
       <form className="login-form" onSubmit={login}>
         <Input

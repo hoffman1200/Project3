@@ -10,8 +10,8 @@ import "../../assets/fonts/Minecraft.ttf";
 
 function NavBar({ isLogged, userName, savedGames }) {
   const user = useContext(Context);
-  console.log(isLogged);
-  console.log(userName);
+  console.log("Is Logged?", isLogged);
+  console.log("Username:", userName);
   useLocation();
 
   const logOut = (e) => {
@@ -28,7 +28,6 @@ function NavBar({ isLogged, userName, savedGames }) {
 
   function customClass() {
     const location = window.location.pathname;
-    console.log(location);
     switch (location) {
       case "/login":
         return "LoginNav";
@@ -49,7 +48,6 @@ function NavBar({ isLogged, userName, savedGames }) {
 
   function fontClass() {
     const location = window.location.pathname;
-    console.log(location);
     switch (location) {
       case "/login":
         return "LoginNav-center";
