@@ -7,12 +7,11 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import profileBackground from "../../assets/mario.mp4";
 import { Context } from "../../App";
 import axios from "axios";
-import { Row, Col, Input } from 'antd';
-
+import { Row, Col, Input } from "antd";
 
 function Profile() {
-  const  user   = useContext(Context);
-  console.log(user)
+  const user = useContext(Context);
+  console.log(user);
 
   return (
     <>
@@ -27,7 +26,9 @@ function Profile() {
       />
       <div className="profile-card">
         {/* <img src="#" alt="" /> */}
-        <Avatar size={70} prefix={<UserOutlined />}></Avatar>
+        <Avatar size={70} prefix={<UserOutlined />}>
+          {user.avatar}
+        </Avatar>
         <h1 className="profile-username">{user.user}</h1>
         <p className="yourGames">Your games submission history here</p>
         <h3>Want to learn how to make your own games??</h3>
