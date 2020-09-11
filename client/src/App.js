@@ -132,13 +132,7 @@ function App() {
             <Route
               exact
               path="/signup"
-              render={() => (
-                <SignUp
-                  displayToast={displayToast}
-                  avatar={avatar}
-                  setAvatar={setAvatar}
-                />
-              )}
+              render={() => <SignUp displayToast={displayToast} />}
             />
             <Route
               exact
@@ -174,11 +168,7 @@ function App() {
               path="/profile"
               render={() =>
                 isLogged ? (
-                  <Profile
-                    userName={userName}
-                    avatar={avatar}
-                    setAvatar={setAvatar}
-                  />
+                  <Profile userName={userName} avatar={avatar} />
                 ) : (
                   <Redirect to={{ pathname: "/login" }} />
                 )
