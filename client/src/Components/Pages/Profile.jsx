@@ -14,8 +14,6 @@ function Profile() {
   const  user   = useContext(Context);
   console.log(user)
 
-  const user = useContext(Context);
-  console.log(user);
   return (
     <>
       <video

@@ -27,7 +27,6 @@ function AddGame({ displayToast }) {
     displayToast("The cake is a lie. Try Again", "error");
   };
   const user = useContext(Context);
-  console.log(user.user.username);
   const newGame = (e) => {
     e.preventDefault();
     axios({
@@ -39,7 +38,7 @@ function AddGame({ displayToast }) {
         description: description,
         instructions: instructions,
         category: category,
-        username: user.user.username,
+        username: user.user
       },
       url: "http://localhost:3001/api/games",
     })
