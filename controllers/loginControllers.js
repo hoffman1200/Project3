@@ -28,6 +28,7 @@ module.exports = {
               username: user.username,
               id: user._id,
               savedGames: user.savedGames,
+              avatar: user.avatar,
             },
           });
           console.log(req.user);

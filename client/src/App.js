@@ -27,6 +27,8 @@ export const Context = React.createContext({ user: "", setUser: () => {} });
 function App() {
   const [userName, setUserName] = useState("");
 
+  const [avatar, setAvatar] = useState("");
+
   const [userId, setUserId] = useState("");
 
   const [games, setGames] = useState([]);
@@ -35,11 +37,12 @@ function App() {
 
   const [data, setData] = useState({
     user: "",
-    setUser: (userName, userId, userSavedGames) => {
+    setUser: (userName, userId, userSavedGames, avatar) => {
       setData({ ...data, user: userName });
       setUserName(userName);
       setUserId(userId);
       setSavedGames(userSavedGames);
+      setAvatar(avatar);
       userName ? setIsLogged(true) : setIsLogged(false);
       localStorage.setItem("isLogged", JSON.stringify(userName ? true : false));
     },
@@ -165,7 +168,7 @@ function App() {
               path="/profile"
               render={() =>
                 isLogged ? (
-                  <Profile userName={userName} />
+                  <Profile userName={userName} avatar={avatar} />
                 ) : (
                   <Redirect to={{ pathname: "/login" }} />
                 )

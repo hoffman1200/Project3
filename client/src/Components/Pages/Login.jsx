@@ -45,7 +45,8 @@ function Login({ displayToast }) {
           user.setUser(
             res.data.user.username,
             res.data.user.id,
-            res.data.user.savedGames
+            res.data.user.savedGames,
+            res.data.user.avatar
           );
         // getUser();
         success();
