@@ -7,9 +7,9 @@
   max-width: 100%;
 }
 
-.CartContainer {
+.CardContainer {
   max-width: 300px;
   min-height: 400px;
+  margin: 0 10px !important;
   margin-top: 30px !important;
 }
-

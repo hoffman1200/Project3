@@ -12,7 +12,6 @@ import { Row, Col, Input } from "antd";
 function Profile(avatar) {
   const user = useContext(Context);
   console.log(user);
-  console.log("AVATAR", avatar.avatar);
 
   return (
     <>
