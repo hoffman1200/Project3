@@ -21,7 +21,7 @@ function NavBar({ isLogged, userName, savedGames }) {
       withCredentials: true,
       url: "http://localhost:3001/api/logout",
     }).then((res) => {
-      user && user.setUser("");
+      user && user.setUser("", "", []);
       console.log(res.data);
     });
   };
@@ -99,9 +99,9 @@ function NavBar({ isLogged, userName, savedGames }) {
                 <Button>Your Profile</Button>
               </Link>
               <div>
-              {/* <Link to="/logout"> */}
-              <Button onClick={logOut}>Log Out</Button>
-              {/* </Link> */}
+                {/* <Link to="/logout"> */}
+                <Button onClick={logOut}>Log Out</Button>
+                {/* </Link> */}
               </div>
             </>
           ) : (

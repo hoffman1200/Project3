@@ -40,9 +40,14 @@ function Login({ displayToast }) {
       url: "http://localhost:3001/api/login",
     })
       .then((res) => {
-        getUser();
-        console.log(res.data);
-        // setIsLogged(true);
+        console.log("What are we getting?", res);
+        user &&
+          user.setUser(
+            res.data.user.username,
+            res.data.user.id,
+            res.data.user.savedGames
+          );
+        // getUser();
         success();
         history.push("/profile");
       })
@@ -52,21 +57,21 @@ function Login({ displayToast }) {
       });
   };
 
-  const getUser = (e) => {
-    // e.preventDefault();
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:3001/api/user",
-    })
-      .then((res) => {
-        user && user.setUser(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log("Uh oh", err);
-      });
-  };
+  // const getUser = (e) => {
+  //   // e.preventDefault();
+  //   axios({
+  //     method: "GET",
+  //     withCredentials: true,
+  //     url: "http://localhost:3001/api/user",
+  //   })
+  //     .then((res) => {
+  //       user && user.setUser(res.data);
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Uh oh", err);
+  //     });
+  // };
 
   return (
     <>
@@ -86,18 +91,20 @@ function Login({ displayToast }) {
           prefix={<UserOutlined />}
           placeholder="Username"
         />
-         &nbsp;
+        &nbsp;
         <Input
           onChange={(event) => setLoginPassword(event.target.value)}
           prefix={<LockOutlined />}
           type="password"
           placeholder="Password"
         />
-         &nbsp;&nbsp;
+        &nbsp;&nbsp;
         <Button htmlType="submit">Submit</Button>
         {/* <Button onClick={getUser}>Get User</Button> */}
       </form>
-      <div className="helloHAL" >{user.user ? <h1>Hello {user.user.username}</h1> : null}</div>
+      <div className="helloHAL">
+        {user.user ? <h1>Hello {user.user.username}</h1> : null}
+      </div>
     </>
   );
 }

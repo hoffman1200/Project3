@@ -4,49 +4,60 @@ import Card from "../Elements/Card";
 import axios from "axios";
 import BlueBackground from "../../assets/blueBackground.mp4";
 
-function Home({ isLogged, games, savedGames, setSavedGames, data }) {
+function Home({ isLogged, games, savedGames, setSavedGames, userId }) {
   let toggleSaved = (id, needSave) => {
     if (!needSave) {
-      let remainingGames = savedGames.filter((sgame) => {
-        return sgame.id !== id;
+      let remainingGames = savedGames.filter((sgameId) => {
+        return sgameId !== id;
       });
       console.log(remainingGames);
       setSavedGames(remainingGames);
+      updateServerSavedGames(remainingGames, userId);
     } else {
-      let newSavedGame = games.filter((game) => {
-        if (game._id === id) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-      // console.log("SAVED Games", id, needSave, games, newSavedGame);
-      let newSavedGames = [...savedGames].concat(newSavedGame);
+      let newSavedGames = [...savedGames];
+      newSavedGames.push(id);
       setSavedGames(newSavedGames);
-      axios({
-        method: "put",
-        data: {
-          savedGames: newSavedGames,
-        },
-        url: "http://localhost:3001/api/register" + data.user.id,
-      }).then((res) => {
-        console.log(res.data);
-      });
+      updateServerSavedGames(newSavedGames, userId);
+      console.log("SAVED Games", id, needSave, newSavedGames);
     }
   };
-  // this function needs to go inside the newSavedGame filter
+
+  const updateServerSavedGames = (savedGames, userId) => {
+    axios({
+      method: "PUT",
+      data: {
+        savedGames,
+      },
+      withCredentials: true,
+      url: "http://localhost:3001/api/register/" + userId,
+    }).then((res) => {
+      console.log("LOOK HERE!!", res.data);
+    });
+  };
+
+  console.log(savedGames);
 
   return (
     <div id="home" className={isLogged ? "loggedIn" : "loggedOut"}>
-      <video autoPlay loop muted source src={BlueBackground} type="video/mp4" />
+      <video
+        autoPlay
+        loop
+        muted
+        source="true"
+        src={BlueBackground.toString()}
+        type="video/mp4"
+      />
 
       {games.map((game) => {
-        let isSaved = savedGames.includes(game);
+        let isSaved = savedGames.some((sg) => {
+          return sg === game._id;
+        });
+        // console.log("CARD", sg, game.id, sg === game.id);
 
         return (
           <Card
             hoverable
-            key={game.id}
+            key={game._id}
             isLogged={isLogged}
             game={game}
             isSaved={isSaved}

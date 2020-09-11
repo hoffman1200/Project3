@@ -26,17 +26,20 @@ export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
   const [userName, setUserName] = useState("");
+
   const [userId, setUserId] = useState("");
-  const [userAvatar , setUserAvatar] = useState("");
+
   const [games, setGames] = useState([]);
 
   const [savedGames, setSavedGames] = useState([]);
 
   const [data, setData] = useState({
     user: "",
-    setUser: (userName) => {
+    setUser: (userName, userId, userSavedGames) => {
       setData({ ...data, user: userName });
       setUserName(userName);
+      setUserId(userId);
+      setSavedGames(userSavedGames);
       userName ? setIsLogged(true) : setIsLogged(false);
       localStorage.setItem("isLogged", JSON.stringify(userName ? true : false));
     },
@@ -103,7 +106,7 @@ function App() {
                   games={games}
                   savedGames={savedGames}
                   setSavedGames={setSavedGames}
-                  data={data}
+                  userId={userId}
                 />
               )}
             />
@@ -137,6 +140,8 @@ function App() {
                   <Saved
                     savedGames={savedGames}
                     setSavedGames={setSavedGames}
+                    games={games}
+                    userId={userId}
                   />
                 )
                 // ) : (
