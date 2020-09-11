@@ -25,15 +25,23 @@ import axios from "axios";
 export const Context = React.createContext({ user: "", setUser: () => {} });
 
 function App() {
-  const [userName, setUserName] = useState("");
-
-  const [avatar, setAvatar] = useState("");
-
-  const [userId, setUserId] = useState("");
-
   const [games, setGames] = useState([]);
 
-  const [savedGames, setSavedGames] = useState([]);
+  const [userName, setUserName] = useState(
+    localStorage.getItem("userName") || ""
+  );
+
+  const [userId, setUserId] = useState(localStorage.getItem("userId") || "");
+
+  const [avatar, setAvatar] = useState(localStorage.getItem("avatar") || "");
+
+  const [savedGames, setSavedGames] = useState(
+    JSON.parse(localStorage.getItem("savedGames")) || []
+  );
+
+  const [isLogged, setIsLogged] = useState(
+    JSON.parse(localStorage.getItem("isLogged")) || false
+  );
 
   const [data, setData] = useState({
     user: "",
@@ -45,14 +53,15 @@ function App() {
       setAvatar(avatar);
       userName ? setIsLogged(true) : setIsLogged(false);
       localStorage.setItem("isLogged", JSON.stringify(userName ? true : false));
+      localStorage.setItem("userName", userName);
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("avatar", avatar);
+      localStorage.setItem("savedGames", JSON.stringify(userSavedGames));
     },
   });
 
   console.log("DATA ON APP.JS:", data);
 
-  const [isLogged, setIsLogged] = useState(
-    JSON.parse(localStorage.getItem("isLogged"))
-  );
   useEffect(() => {
     axios({
       method: "GET",
