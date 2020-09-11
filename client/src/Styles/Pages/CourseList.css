@@ -11,3 +11,16 @@
 #courses {
   z-index: 1;
 }
+.course-title {
+  color: white;
+}
+.ant-table-thead tr th {
+  background-color: green !important;
+}
+
+.ant-table-tbody tr:nth-child(odd) td {
+  background-color: pink;
+}
+.ant-table-tbody tr:nth-child(even) td {
+  background-color: burlywood;
+}
