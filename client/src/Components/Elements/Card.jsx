@@ -15,7 +15,7 @@ function Card({ game, isSaved, toggleSaved, isLogged }) {
 
   return (
     <>
-      <AntCard className="CartContainer" hooverable>
+      <AntCard className="CardContainer">
         <div className="card" key={game._id} id={"card" + game._id}>
           <div className="imageContainer">
             <Link to={"/game/" + game._id}>
