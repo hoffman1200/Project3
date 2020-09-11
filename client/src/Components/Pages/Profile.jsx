@@ -27,7 +27,7 @@ function Profile() {
       />
       <div className="profile-card">
         {/* <img src="#" alt="" /> */}
-        <Avatar size={70} prefix={<UserOutlined />}></Avatar>
+        <Avatar size={70} prefix={<UserOutlined />} src=""></Avatar>
         <h1 className="profile-username">{user.user}</h1>
         <p className="yourGames">Your games submission history here</p>
         <h3>Want to learn how to make your own games??</h3>

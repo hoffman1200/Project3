@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 function SignUp({ displayToast }) {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerAvatar, setRegisterAvatar] = useState("");
   const success = () => {
     displayToast(
       "Successfully Registered. Would you kindly...log in?",
@@ -29,6 +30,7 @@ function SignUp({ displayToast }) {
       data: {
         username: registerUsername,
         password: registerPassword,
+        avatar: registerAvatar,
       },
       withCredentials: true,
       url: "http://localhost:3001/api/register",
@@ -68,6 +70,12 @@ function SignUp({ displayToast }) {
           type="password"
           prefix={<LockOutlined />}
           onChange={(event) => setRegisterPassword(event.target.value)}
+        />
+         &nbsp;
+        <Input
+          placeholder="Avatar"
+          prefix={<LockOutlined />}
+          onChange={(event) => setRegisterAvatar(event.target.value)}
         />
          &nbsp;
         <Button onClick={register}>Create Account</Button>

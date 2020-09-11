@@ -26,6 +26,7 @@ module.exports = {
         const newUser = new User({
           username: req.body.username,
           password: hashedPassword,
+          avatar: req.body.avatar
         });
         await newUser.save();
         res.send("user Created");
