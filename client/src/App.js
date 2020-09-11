@@ -44,6 +44,9 @@ function App() {
       localStorage.setItem("isLogged", JSON.stringify(userName ? true : false));
     },
   });
+
+  console.log("DATA ON APP.JS:", data);
+
   const [isLogged, setIsLogged] = useState(
     JSON.parse(localStorage.getItem("isLogged"))
   );
@@ -83,27 +86,6 @@ function App() {
   function loggedUser() {
     console.log("loggedUser");
   }
-
-  // function PrivateRoute({ children, ...rest }) {
-  //   console.log(isLogged);
-  //   console.log(rest.isLogged);
-  //   return (
-  //     <Route
-  //       {...rest}
-  //       render={() =>
-  //         isLogged ? (
-  //           children
-  //         ) : (
-  //           <Redirect
-  //             to={{
-  //               pathname: "/login",
-  //             }}
-  //           />
-  //         )
-  //       }
-  //     />
-  //   );
-  // }
 
   return (
     <div className={isLogged ? "main logged" : "main"}>

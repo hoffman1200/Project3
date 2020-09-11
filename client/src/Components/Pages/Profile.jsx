@@ -6,10 +6,14 @@ import { Avatar } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import profileBackground from "../../assets/mario.mp4";
 import { Context } from "../../App";
+import axios from "axios";
+import { Row, Col, Input } from 'antd';
+
 
 function Profile() {
-  const user = useContext(Context);
-  console.log(user);
+  const  user   = useContext(Context);
+  console.log(user)
+
   return (
     <>
       <video
@@ -17,7 +21,7 @@ function Profile() {
         autoPlay
         loop
         muted
-        source
+        source="true"
         src={profileBackground}
         type="video/mp4"
       />
