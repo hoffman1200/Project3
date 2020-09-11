@@ -89,7 +89,7 @@ function NavBar({ isLogged, userName, savedGames }) {
         <div className="nav-right">
           {isLogged ? (
             <>
-              <p className="username">{userName.username}</p>
+              <p className="username">{userName}</p>
               &nbsp;
               <Link to="/saved">
                 <Button>My Saved Games</Button>
