@@ -66,6 +66,18 @@ function App() {
         console.error(err);
       });
   }, []);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "https://bbblue-games-server.herokuapp.com/wake",
+    })
+      .then((res) => {
+        console.log("WAKE UP!:", res.data.message);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   function displayToast(message, type) {
     let options = {

@@ -21,7 +21,7 @@ function NavBar({ isLogged, userName, savedGames }) {
       withCredentials: true,
       url: "http://localhost:3001/api/logout",
     }).then((res) => {
-      user && user.setUser("", "", []);
+      user && user.setUser("", "", [], "");
       console.log(res.data);
     });
   };
