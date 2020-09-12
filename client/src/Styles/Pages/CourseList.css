@@ -1,7 +1,12 @@
+@font-face {
+  font-family: 'Minecraft';
+  src: local('Minecraft'), url(../../assets/fonts/Minecraft.ttf) format('truetype');
+}
+
 .rocketVideo {
   object-fit: cover;
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,15 +17,23 @@
   z-index: 1;
 }
 .course-title {
-  color: white;
+  color: rgb(255, 248, 188);
+  font-family: Minecraft;
 }
 .ant-table-thead tr th {
-  background-color: green !important;
+  background: rgb(44,76,223);
+  background: linear-gradient(90deg, rgba(44,76,223,1) 0%, rgba(253,132,29,1) 50%, rgba(120,84,245,1) 100%) !important;
 }
 
 .ant-table-tbody tr:nth-child(odd) td {
-  background-color: pink;
+  background-color: rgb(248, 149, 20);
 }
 .ant-table-tbody tr:nth-child(even) td {
-  background-color: burlywood;
+  background-color: rgb(237, 252, 102);
 }
+
+.ant-table-content {
+  font-size: medium;
+  font-family: Minecraft;
+}
+ 

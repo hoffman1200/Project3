@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../Styles/Pages/Game.css";
 import axios from "axios";
+import dragonBackground from "../../assets/dragon.mp4";
 
 function Game(props) {
   let [game, setGame] = useState({});
@@ -20,8 +21,18 @@ function Game(props) {
   }, [id]);
   return (
     <>
-      <h2>{game.title}</h2>
-      <p>{game.description}</p>
+    <video
+        className="loadVideo"
+        autoPlay
+        loop
+        muted
+        source="true"
+        src={dragonBackground}
+        type="video/mp4"
+      />
+      <div className="gamePage">
+      <h2 className="gameFont">{game.title}</h2>
+      <p className="gameFont">{game.description}</p>
       <iframe
         title={game.title}
         src={game.url}
@@ -29,8 +40,9 @@ function Game(props) {
         width="1000px"
         height="700px"
       ></iframe>
-      <p>Added by: {game.username}</p>
-      <p>{game.instructions}</p>
+      <p className="gameFont">Added by: {game.username}</p>
+      <p className="gameFont">{game.instructions}</p>
+      </div>
     </>
   );
 }

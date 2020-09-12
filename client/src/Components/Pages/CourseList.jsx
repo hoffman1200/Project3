@@ -10,7 +10,7 @@ function CourseList() {
       title: "Free Online Game Development Courses",
       dataIndex: "course",
       key: "course",
-      render: (text) => <a>{text}</a>,
+      render: (text) => <a href={text}>{text}</a>,
     },
     {
       title: "Certificate",
@@ -76,7 +76,7 @@ function CourseList() {
       title: "Paid Online Game Development Courses",
       dataIndex: "course",
       key: "course",
-      render: (text) => <a>{text}</a>,
+      render: (text) => <a href={text}>{text}</a>,
     },
     {
       title: "Certificate",
