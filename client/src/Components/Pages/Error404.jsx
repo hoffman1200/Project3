@@ -1,10 +1,19 @@
 import React from "react";
+import "../../Styles/Pages/Error404.css";
+import errorBackground from "../../assets/castle.mp4";
 
 function Error404() {
   return (
     <>
-      <h1>404 Error</h1>
-      <h2>The Princess is in another castle</h2>
+    <video
+        className="errorVideo"
+        autoPlay
+        loop
+        muted
+        source="true"
+        src={errorBackground}
+        type="video/mp4"
+      />
     </>
   );
 }
