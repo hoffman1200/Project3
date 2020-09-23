@@ -37,7 +37,7 @@ function Login({ displayToast }) {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "http://localhost:3001/api/login",
+      url: "http://gamer-dash.herokuapp.com/api/login",
     })
       .then((res) => {
         console.log("What are we getting?", res);

@@ -65,7 +65,7 @@ function App() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/api/games",
+      url: "http://gamer-dash.herokuapp.com/api/games",
     })
       .then((games) => {
         console.log("GAMES", games);

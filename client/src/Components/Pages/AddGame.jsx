@@ -46,7 +46,7 @@ function AddGame({ displayToast }) {
         category: category,
         username: user.user,
       },
-      url: "http://localhost:3001/api/games",
+      url: "http://gamer-dash.herokuapp.com/api/games",
     })
       .then((res) => {
         success();

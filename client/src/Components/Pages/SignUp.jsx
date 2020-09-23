@@ -33,7 +33,7 @@ function SignUp({ displayToast }) {
         avatar: registerAvatar,
       },
       withCredentials: true,
-      url: "http://localhost:3001/api/register",
+      url: "http://gamer-dash.herokuapp.com/api/register",
     })
       .then((res) => {
         success();
@@ -64,20 +64,20 @@ function SignUp({ displayToast }) {
           prefix={<UserOutlined />}
           onChange={(event) => setRegisterUsername(event.target.value)}
         />
-         &nbsp;
+        &nbsp;
         <Input
           placeholder="Password"
           type="password"
           prefix={<LockOutlined />}
           onChange={(event) => setRegisterPassword(event.target.value)}
         />
-         &nbsp;
+        &nbsp;
         <Input
           placeholder="Avatar"
           prefix={<LockOutlined />}
           onChange={(event) => setRegisterAvatar(event.target.value)}
         />
-         &nbsp;
+        &nbsp;
         <Button onClick={register}>Create Account</Button>
       </form>
     </>
