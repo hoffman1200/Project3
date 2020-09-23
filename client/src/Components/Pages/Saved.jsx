@@ -24,7 +24,7 @@ function Saved({ games, savedGames, setSavedGames, userId }) {
         savedGames,
       },
       withCredentials: true,
-      url: "http://localhost:3001/api/register/" + userId,
+      url: "http://gamer-dash.herokuapp.com/api/register/" + userId,
     }).then((res) => {
       console.log("LOOK HERE!!", res.data);
     });

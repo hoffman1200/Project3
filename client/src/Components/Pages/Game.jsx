@@ -9,7 +9,7 @@ function Game(props) {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/api/games/" + id,
+      url: "http://gamer-dash.herokuapp.com/api/games/" + id,
     })
       .then((game) => {
         console.log("GAME", game);
@@ -21,7 +21,7 @@ function Game(props) {
   }, [id]);
   return (
     <>
-    <video
+      <video
         className="loadVideo"
         autoPlay
         loop
@@ -31,17 +31,17 @@ function Game(props) {
         type="video/mp4"
       />
       <div className="gamePage">
-      <h2 className="gameFont">{game.title}</h2>
-      <p className="gameFont">{game.description}</p>
-      <iframe
-        title={game.title}
-        src={game.url}
-        frameborder="0"
-        width="1000px"
-        height="700px"
-      ></iframe>
-      <p className="gameFont">Added by: {game.username}</p>
-      <p className="gameFont">{game.instructions}</p>
+        <h2 className="gameFont">{game.title}</h2>
+        <p className="gameFont">{game.description}</p>
+        <iframe
+          title={game.title}
+          src={game.url}
+          frameborder="0"
+          width="1000px"
+          height="700px"
+        ></iframe>
+        <p className="gameFont">Added by: {game.username}</p>
+        <p className="gameFont">{game.instructions}</p>
       </div>
     </>
   );
